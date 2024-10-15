@@ -1,4 +1,3 @@
-<h1>Datos: </h1>
 <?php
 include("database.php");
 $text = $_GET['text'];
@@ -11,4 +10,4 @@ $result = mysqli_query($connection, $query);
 
 while ($row = mysqli_fetch_assoc($result)) {
     echo "<p>".$row["datatest"]."</p>";
-}
+} ?>
