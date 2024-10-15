@@ -11,7 +11,13 @@ int main() {
 
     if(curl) {
         // Configurar la URL de destino
-        curl_easy_setopt(curl, CURLOPT_URL, "http://example.com");
+        std::cout<<"Dame el string a insertar: ";
+        std::string s;
+        std::cin>>s;
+
+        std::string x="https://edcance.dev/proyectoIoT/datos.php?text="+s;
+
+        curl_easy_setopt(curl, CURLOPT_URL, x.c_str());
 
         // Opción para no imprimir salida ni capturar la respuesta
         curl_easy_setopt(curl, CURLOPT_NOBODY, 1L); // No descargar el cuerpo de la respuesta
