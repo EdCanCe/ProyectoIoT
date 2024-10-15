@@ -1,3 +1,4 @@
+<h1>Datos: </h1>
 <?php
 include("database.php");
 $text = $_GET['text'];
@@ -5,9 +6,6 @@ $text = $_GET['text'];
 $query = "INSERT INTO mydata(datatest) VALUES ('$text');";
 $result = mysqli_query($connection, $query);
 
-?>
-<h1>Datos: </h1>
-<?php
 
 $query = "SELECT datatest FROM mydata";
 $result = mysqli_query($connection, $query);
