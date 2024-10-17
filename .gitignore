@@ -1,2 +1,5 @@
 database.php
 .vscode
+*.out
+*.x
+mac_address
