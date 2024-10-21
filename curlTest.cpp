@@ -1,6 +1,18 @@
 #include <iostream>
 #include <curl/curl.h>
 
+std::string replaceSpaces(const std::string& str) {
+    std::string result;
+    for (char ch : str) {
+        if (ch == ' ') {
+            result += "+";
+        } else {
+            result += ch;
+        }
+    }
+    return result;
+}
+
 int main() {
     CURL* curl;
     CURLcode res;
@@ -13,7 +25,10 @@ int main() {
         // Configurar la URL de destino
         std::cout<<"Dame el string a insertar: ";
         std::string s;
-        std::cin>>s;
+        std::getline(std::cin, s);
+
+        s=replaceSpaces(s);
+        std::cout<<s;
 
         std::string x="https://edcance.dev/proyectoIoT/datos.php?text="+s;
 
