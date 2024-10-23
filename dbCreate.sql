@@ -1,3 +1,3 @@
-create table(
-    datatest varchar(20)
+create table Usuario(
+    
 );
