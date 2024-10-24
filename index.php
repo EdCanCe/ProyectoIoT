@@ -5,4 +5,4 @@ include("database.php");?>
 
 <p>La temperatura actual es: <span id="temperatureHolder">0</span></p>
 
-<script src="dataReloadCall.js">
+<script src="dataReloadCall.js"></script>
