@@ -5,26 +5,25 @@ function sleep(ms) {
 let a=5;
 let temperature=document.getElementById("temperatureHolder");
 
-async function dataReload(){
-
+async function dataReload() {
     try {
-        // Realizamos la solicitud al archivo PHP
         const response = await fetch('getLastRow.php');
-        const data = await response.json(); // Convertimos la respuesta a JSON
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
 
-        // Comprobamos si hay un error en los datos
         if (data.error) {
             console.error(data.error);
         } else {
-            console.log(data); // Aquí están los datos de la última fila
-            // Puedes actualizar tu página o DOM con los datos recibidos
-            document.getElementById('temperatureHolder').textContent = data.temperatura+" "+a; // Ejemplo
+            console.log(data);
+            temperatureHolder.textContent = `${data.aaaa} ${a}`; // Usando template literals
         }
     } catch (error) {
         console.error('Error al obtener los datos:', error);
     }
 
-    await sleep(5000); //5 segundos
+    await sleep(5000); // 5 segundos
     dataReload();
 }
 
