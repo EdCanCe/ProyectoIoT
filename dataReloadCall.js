@@ -17,11 +17,13 @@ async function dataReload() {
             console.error(data.error);
         } else {
             console.log(data);
-            temperatureHolder.textContent = `${data.aaaa} ${a}`; // Usando template literals
+            temperatureHolder.textContent = `${data.datatest} ${a}`; // Usando template literals
         }
     } catch (error) {
         console.error('Error al obtener los datos:', error);
     }
+
+    a+=1;
 
     await sleep(5000); // 5 segundos
     dataReload();
