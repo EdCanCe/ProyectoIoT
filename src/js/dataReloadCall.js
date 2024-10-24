@@ -2,7 +2,6 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let a=5;
 let temperature=document.getElementById("temperatureHolder");
 
 async function dataReload() {
@@ -18,13 +17,11 @@ async function dataReload() {
             console.error(data.error);
         } else {
             console.log(data);
-            temperatureHolder.textContent = data.datatest + " " + a; 
+            temperatureHolder.textContent = data.datatest; 
         }
     } catch (error) {
         console.error('Error al obtener los datos:', error);
     }
-
-    a+=1;
 
     await sleep(10000); // 10 segundos
     dataReload();
