@@ -1,5 +1,5 @@
 <?php
-include('database.php'); // Aquí debe estar tu conexión
+include('src/models/database.php'); // Aquí debe estar tu conexión
 
 // Consulta para obtener la última fila basada en una columna (por ejemplo, un ID auto-incremental)
 $query = "SELECT datatest FROM mydata ORDER BY fecha DESC LIMIT 1";
