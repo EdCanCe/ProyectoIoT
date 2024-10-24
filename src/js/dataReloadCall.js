@@ -8,7 +8,7 @@ let temperature=document.getElementById("temperatureHolder");
 async function dataReload() {
 
     try {
-        const response = await fetch('getLastRow.php');
+        const response = await fetch('IoT/getLastRow.php');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

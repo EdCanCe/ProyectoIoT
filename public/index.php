@@ -5,4 +5,4 @@ include("../src/models/database.php");?>
 
 <p>La temperatura actual es: <span id="temperatureHolder">0</span></p>
 
-<script src="../src/js/dataReloadCall.js"></script>
+<script src="IoT/src/js/dataReloadCall.js"></script>
