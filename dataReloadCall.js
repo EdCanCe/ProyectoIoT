@@ -6,6 +6,7 @@ let a=5;
 let temperature=document.getElementById("temperatureHolder");
 
 async function dataReload() {
+
     try {
         const response = await fetch('getLastRow.php');
         if (!response.ok) {
@@ -17,7 +18,7 @@ async function dataReload() {
             console.error(data.error);
         } else {
             console.log(data);
-            temperatureHolder.textContent = `${data.datatest} ${a}`; // Usando template literals
+            temperatureHolder.textContent = data.datatest + " " + a; 
         }
     } catch (error) {
         console.error('Error al obtener los datos:', error);
