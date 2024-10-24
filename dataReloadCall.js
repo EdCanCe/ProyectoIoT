@@ -9,7 +9,7 @@ async function dataReload(){
 
     try {
         // Realizamos la solicitud al archivo PHP
-        const response = await fetch('getLatestRow.php');
+        const response = await fetch('getLastRow.php');
         const data = await response.json(); // Convertimos la respuesta a JSON
 
         // Comprobamos si hay un error en los datos
