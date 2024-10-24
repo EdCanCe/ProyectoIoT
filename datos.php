@@ -1,5 +1,5 @@
 <?php
-include("database.php");
+include("src/models/database.php");
 $text = $_GET['text'];
 
 $query = "INSERT INTO mydata(datatest) VALUES ('$text');";
