@@ -4,8 +4,8 @@
 std::string replaceSpaces(const std::string& str) {
     std::string result;
     for (char ch : str) {
-        if (ch == " ") {
-            result += '+';
+        if (ch == ' ') {
+            result += "+";
         } else {
             result += ch;
         }
@@ -23,14 +23,14 @@ int main() {
 
     if(curl) {
         // Configurar la URL de destino
-        std::cout<<'Dame el string a insertar: ';
+        std::cout<<"Dame el string a insertar: ";
         std::string s;
         std::getline(std::cin, s);
 
         s=replaceSpaces(s);
         std::cout<<s;
 
-        std::string x='https://edcance.dev/proyectoIoT/datos.php?text='+s;
+        std::string x="https://edcance.dev/proyectoIoT/datos.php?text="+s;
 
         curl_easy_setopt(curl, CURLOPT_URL, x.c_str());
 
@@ -42,7 +42,7 @@ int main() {
 
         // Verificar errores
         if(res != CURLE_OK) {
-            std::cerr << 'curl_easy_perform() failed: ' << curl_easy_strerror(res) << std::endl;
+            std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
         }
 
         // Limpiar
