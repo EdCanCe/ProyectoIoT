@@ -1,4 +1,4 @@
-<?php require_once "../config/db_connection.php" //Enlace al documento que se conecta a la base de datos
+<?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
 
 // Consulta para obtener la última fila basada en una columna (por ejemplo, un ID auto-incremental)
 $query = 'SELECT datatest FROM mydata ORDER BY fecha DESC LIMIT 1';
