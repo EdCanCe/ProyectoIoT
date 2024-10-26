@@ -2,14 +2,14 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let temperature=document.getElementById("temperatureHolder");
+let temperature=document.getElementById('temperatureHolder');
 
 async function dataReload() {
 
     try {
-        const response = await fetch('src/controllers/record_controller.php');
+        const response = await fetch("src/controllers/record_controller.php");
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error("Network response was not ok");
         }
         const data = await response.json();
 
@@ -20,7 +20,7 @@ async function dataReload() {
             temperatureHolder.textContent = data.datatest; 
         }
     } catch (error) {
-        console.error('Error al obtener los datos:', error);
+        console.error("Error al obtener los datos:", error);
     }
 
     await sleep(10000); // 10 segundos

@@ -1,0 +1,1 @@
+<?php require_once "../config/db_connection.php" //Enlace al documento que se conecta a la base de datos
