@@ -1,6 +1,6 @@
 <?php require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
 require_once "../src/components/header.php";
-renderHeader("Inserción de datos");
+echo renderHeader("Inserción de datos");
 
 //Verifica si hay algún valor para ingresar a la base de datos
 if (isset($_GET["text"])) {
