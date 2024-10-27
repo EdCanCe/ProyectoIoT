@@ -1,5 +1,3 @@
 function redirect(adress){
-    window.location.replace(adress);
+    window.location.assign(adress);
 }
-
-alert("Si carga tocho morocho");
