@@ -10,5 +10,5 @@
  * @return string El HTML del botón creado.
  */
 function createButton($jsAction, $text, $styles){
-    return "<button class='$styles' onclick='$jsAction'>$text</button>"
+    return "<button class='$styles' onclick='$jsAction'>$text</button>";
 }

@@ -1,5 +1,7 @@
-<?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
-require_once "button.php" //Carga el creador de elementos
+<?php require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos. La dirección se pone como si fuera del elemento que la llama, es decir, un elemento en /public
+require_once "button.php"; //Carga el creador de elementos
+
+session_start(); //Inicia la sesión
 
 /**
  * Crea el header de la página.
@@ -11,7 +13,7 @@ function renderHeader($pageTitle){
     $html = ""; //Inicializa la variable
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
-    if(isset($_SESSION["IDUser"])){ ?> <!-- Despliega esto si el usuario SI inició sesión -->
+    if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
         $html = <<<HTML
         <!DOCTYPE html>
         <html lang="es">
@@ -24,8 +26,8 @@ function renderHeader($pageTitle){
         </head>
         <body>
             <p>Se inició sesión</p>
-        HTML;
-    <?php } else{ ?> <!-- Despliega esto si el usuario NO inició sesión -->
+HTML;
+    }else{ //Despliega esto si el usuario NO inició sesión
         $html = <<<HTML
         <!DOCTYPE html>
         <html lang="es">
@@ -37,9 +39,9 @@ function renderHeader($pageTitle){
             <script src="script.js"></script> <!-- Enlace a un archivo JavaScript -->
         </head>
         <body>
-            <p>Se inició sesión</p>
-        HTML;
-    <?php }
+            <p>NO se inició sesión</p>
+HTML;
+    }
 
     return $html;
 }
