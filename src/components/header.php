@@ -27,9 +27,9 @@ HTML;
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
     if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
-        $html = $html . createButton('redirect("logout")', "LOGOUT", "");
+        $html = $html . renderButton('redirect("logout")', "LOGOUT", "");
     }else{ //Despliega esto si el usuario NO inició sesión
-        $html = $html . createButton('redirect("logout")', "LOGIN", "");
+        $html = $html . renderButton('redirect("logout")', "LOGIN", "");
     }
 
     return $html;

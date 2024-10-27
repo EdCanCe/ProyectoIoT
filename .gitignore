@@ -4,3 +4,4 @@ db_connection.php
 *.out
 *.x
 mac_address
+.htaccess
