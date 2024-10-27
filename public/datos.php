@@ -1,9 +1,9 @@
 <?php require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
 require_once "../src/components/header.php";
-echo renderHeader("Inserción de datos");
 
 //Verifica si hay algún valor para ingresar a la base de datos
 if (isset($_GET["text"])) {
+    echo renderHeader("Inserción", 1, array("dataReloadCall", "redirect"), array("main"));
     $text = $_GET["text"];
 
     $query = "INSERT INTO mydata(datatest) VALUES ('$text');";
@@ -15,7 +15,6 @@ if (isset($_GET["text"])) {
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<p>".$row["datatest"]."</p>";
     }
-}else{ ?>
-    <h1>Wowowow</h1>
-<?php 
+}else{ 
+    echo renderHeader("Wasa", 0, array("dataReloadCall", "redirect"), array("main"));
 }
