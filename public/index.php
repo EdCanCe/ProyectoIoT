@@ -1,7 +1,7 @@
-<?php require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
-include("../src/components/header.php") ?>
+<?php include("../src/config/db_connection.php"); //Enlace al documento que se conecta a la base de datos
+include("../src/components/header.php");
 
-renderHeader("aaa");
+echo renderHeader("aaa"); ?>
 
 <h1>Prueba de repeticiones:</h1>
 
