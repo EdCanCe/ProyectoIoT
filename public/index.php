@@ -1,5 +1,5 @@
-<?php require_once '../src/config/db_connection.php'; //Enlace al documento que se conecta a la base de datos
-?>
+<?php require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
+include("../src/components/header.php") ?>
 
 <h1>Prueba de repeticiones:</h1>
 

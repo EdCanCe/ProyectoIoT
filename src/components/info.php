@@ -14,9 +14,11 @@ $json = '{
             "name": "Edmundo Canedo Cervantes",
             "git": "EdCanCe"
         }
+    },
+    "proyect": {
+        "name": "FALTA DEFINIR NOMBRE DE PROYECTO",
+        "description": "FALTA DEFINIR DESCRIPCIÓN DE PROYECTO"
     }
 }';
 
 $info = json_decode($json, true);
-
-echo $info["authors"]["Mundo"]["git"];
