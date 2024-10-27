@@ -24,13 +24,13 @@ function renderHeader($pageTitle, $numOfVar, $jsFilenames, $cssFilenames){
 HTML;
 
     //Añade las direcciones de los archivos de JS
-    for($i=0; $i<count($jsFilenames); i++){
-        $html = $html . "<script src='" . $adressSetter . "src/js/" . $jsFilenames[i] . ".js'></script>";
+    for($i=0; $i<count($jsFilenames); $i++){
+        $html = $html . "<script src='" . $adressSetter . "src/js/" . $jsFilenames[$i] . ".js'></script>";
     }
 
     //Añade las direcciones de los archivos de CSS
-    for($i=0; $i<count($cssFilenames); i++){
-        $html = $html . "<link rel='stylesheet' href='" . $adressSetter . "src/styles/" . $cssFilenames[i] . ".css'>";
+    for($i=0; $i<count($cssFilenames); $i++){
+        $html = $html . "<link rel='stylesheet' href='" . $adressSetter . "src/styles/" . $cssFilenames[$i] . ".css'>";
     }
 
     //Cierra el head e inicia el body con el header

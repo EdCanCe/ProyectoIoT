@@ -10,7 +10,7 @@
  */
 function offsetAdress($numOfVar){
     $adressSetter = ""; //Inicializa la variable
-    for($i=0; $i<$numOfVar; i++){ //Corrije el offset cuando hay varias variables en la URL
+    for($i=0; $i<$numOfVar; $i++){ //Corrije el offset cuando hay varias variables en la URL
         $adressSetter = $adressSetter . "../";
     }
     return $adressSetter;
