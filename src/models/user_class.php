@@ -12,7 +12,7 @@ class User {
     private $mLastName;
     private $accessKey;
 
-    public function __construct($newIDUser, $newUsername, $newFLastName, $newMLastName, $newAccessKey);
+    public function __construct($newUsername, $newFLastName, $newMLastName, $newAccessKey);
 
     public function getIDUser();
     public function getUsername();
@@ -29,4 +29,70 @@ class User {
     public function itExists();
     public function addToDB();
     public function loadFromDB($identifier);
+}
+
+/**
+ * Constructor de usuario.
+ * 
+ * @param string $newUsername El username del usuario.
+ * @param string $newFLastName El apellido paterno del usuario.
+ * @param string $newMLastName El apellido materno del usuario.
+ * @param string $newAccessKey La contraseña del usuario.
+ */
+public function User::__construct($newUsername, $newFLastName, $newMLastName, $newAccessKey) {
+    $this->username = $newUsername;
+    $this->fLastName = $newFLastName;
+    $this->mLastName = $newMLastName;
+    $this->accessKey = encript($newAccessKey, 25);
+}
+
+/**
+ * 
+ */
+public function User::getIDUser() {
+    return $this->idUser;
+}
+
+public function User::getUsername() {
+    return $this->username;
+}
+
+public function User::getFLastName() {
+    return $this->fLastName;
+}
+
+public function User::getMLastName() {
+    return $this->mLastName;
+}
+
+public function User::setUsername($newUsername) {
+    $this->username = $newUsername;
+}
+
+public function User::setFLastName($newFLastName) {
+    $this->fLastName = $newFLastName;
+}
+
+public function User::setMLastName($newMLastName) {
+    $this->mLastName = $newMLastName;
+}
+
+public function User::setAccessKey($newAccessKey) {
+    $this->accessKey = $newAccessKey;
+}
+
+public function User::compareAccessKey($accessKeyB) {
+    return $this->accessKey === $accessKeyB;
+}
+
+public function User::itExists() {
+    // Implementación de verificación de existencia
+}
+
+public function User::addToDB() {
+    // Implementación para agregar usuario a la base de datos
+}
+
+public function User::loadFromDB($identifier) {
+    // Implementación para cargar datos de la base de datos
 }

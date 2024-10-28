@@ -9,5 +9,5 @@
  * @return string La cadena encriptada.
  */
 function encript($raw, $size){
-
+    return "aaa";
 }
