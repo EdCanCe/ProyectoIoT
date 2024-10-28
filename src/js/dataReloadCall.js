@@ -1,3 +1,8 @@
+/**
+ * Pone un delay para funciones asíncronas.
+ * 
+ * @param {int} ms Los milisegundos del delay.
+ */
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

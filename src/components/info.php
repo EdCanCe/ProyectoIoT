@@ -1,5 +1,5 @@
 <?php
-
+//Un json con la información del proyecto
 $json = '{
     "authors": {
         "Fer": {
@@ -21,4 +21,4 @@ $json = '{
     }
 }';
 
-$info = json_decode($json, true);
+$info = json_decode($json, true); //Convierte el string a JSON

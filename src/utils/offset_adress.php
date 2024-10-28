@@ -7,6 +7,8 @@
  * 
  * @param int $numOfVar El número de variables que se le
  * pasan a la página.
+ * 
+ * @return string La corrección del offset.
  */
 function offsetAdress($numOfVar){
     $adressSetter = ""; //Inicializa la variable

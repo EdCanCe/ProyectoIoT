@@ -8,6 +8,7 @@ session_start(); //Inicia la sesión
  * Crea el header de la página.
  * 
  * @param string $pageTitle El título de la página.
+ * 
  * @return string El HTML del header de la página.
  */
 function renderHeader($pageTitle, $numOfVar, $jsFilenames, $cssFilenames){
@@ -34,13 +35,16 @@ HTML;
     }
 
     //Cierra el head e inicia el body con el header
-    $html = $html . "</head><body><head>";
+    $html = $html . "</head><body><head class=''>";
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
     if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
-        $html = $html . renderButton('redirect("logout")', "LOGOUT", "");
+        $html = $html . renderButton('redirect("logout")', "LOG OUT", "");
+        $html = $html . renderButton('redirect("devices")', "MY DEVICES", "");
+        $html = $html . renderButton('redirect("profile")', "MY PROFILE", "");
     }else{ //Despliega esto si el usuario NO inició sesión
-        $html = $html . renderButton('redirect("logout")', "LOGIN", "");
+        $html = $html . renderButton('redirect("login")', "LOG IN", "");
+        $html = $html . renderButton('redirect("signup")', "SIGN UP", "");
     }
 
     //Cierra el header
