@@ -117,19 +117,21 @@ void addPlaces(string s){
 class User {
 public:
     long long idUser;
-    std::string username;
+    std::string givenname;
     std::string fLastName;
     std::string mLastName;
+    std::string username;
     std::string accessKey;
 
-    User(long long id, const std::string& user, const std::string& firstName, const std::string& lastName, const std::string& key) : idUser(id), username(user), fLastName(firstName), mLastName(lastName), accessKey(key) {}
+    User(long long id, const std::string& user, const std::string& firstName, const std::string& lastName, std::string uname, const std::string& key) : idUser(id), givenname(user), fLastName(firstName), mLastName(lastName), username(uname), accessKey(key) {}
 
     void printInsertSQL() const {
-        std::cout << "INSERT INTO User (IDUser, Username, FLastName, MLastName, AccessKey) VALUES ("
+        std::cout << "INSERT INTO User (IDUser, givenname, FLastName, MLastName, Username, AccessKey) VALUES ("
         << idUser << ", '" 
-        << username << "', '"
+        << givenname << "', '"
         << fLastName << "', '"
         << mLastName << "', '"
+        << username << "', '"
         << accessKey << "');" 
         << std::endl;
     }
@@ -213,8 +215,9 @@ int main(){
     vector<User> users;
     for(int i=0; i<30; i++){
         string name=names[randomNumber(names.size())];
-        string lastname=lastNames[randomNumber(lastNames.size())];
-        users.push_back(User(i+1, encript(char(i)+name.substr(1,10), 10), name, lastname, encript(name, 25)));
+        string mlastname=lastNames[randomNumber(lastNames.size())];
+        string flastname=lastNames[randomNumber(lastNames.size())];
+        users.push_back(User(i+1, name, flastname, mlastname, encript(name.substr(0,5)+flastname.substr(0,6)+mlastname.substr(0,6), 20), encript(name, 15)));
         users[i].printInsertSQL();
     }
     cout<<"\n";    
