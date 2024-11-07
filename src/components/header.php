@@ -35,7 +35,7 @@ HTML;
     }
 
     //Cierra el head e inicia el body con el header
-    $html = $html . "</head><body><head class=''>";
+    $html = $html . "</head><body><header class=''>";
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
     if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
