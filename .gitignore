@@ -3,5 +3,7 @@ db_connection.php
 .vscode
 *.out
 *.x
+*.exe
 mac_address
+psw
 .htaccess
