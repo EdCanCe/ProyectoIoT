@@ -21,10 +21,11 @@ if(isset($_GET["id"])){
         }else{ //Se va a hacer un select
     
         }
-    }else{
+    }else{ //Se pasó un dispositivo con una key incorrecta
+
     }
 
-}else{
+}else{ //eliminar esto pq es de una prueba
     //Hace una consulta para obtener la última lectura de datos
     $query = "SELECT datatest FROM mydata ORDER BY fecha DESC LIMIT 1";
     $result = mysqli_query($connection, $query);
