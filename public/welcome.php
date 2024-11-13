@@ -27,11 +27,29 @@ echo renderHeader($info["proyect"]["name"], 0, array("dataReloadCall", "redirect
 <section class="second">
     <div class="principal2">
         <div class="imagecollection2">
-            <img src="./src/styles/images/welcome/image5.jpg" alt="" class="image5">
+            <img src="./src/styles/images/welcome/image5.png" alt="" class="image5">
             <img src="./src/styles/images/welcome/image6.png" alt="" class="image6">
             <img src="./src/styles/images/welcome/image7.jpg" alt="" class="image7">
         </div>
+        <div class="info2">
+            <h2 class="subtitle2">Monitorea tu lugar de trabajo</h2>
+            <p class="text2">Obtén datos precisos de temperatura,<br> 
+            humedad y calidad del aire en cada espacio.<br>
+            Mantente informado sobre el ambiente<br>
+            de trabajo en tiempo real.</p>
+        </div>
+    </div>
+</section>
 
+<section class="third">
+    <div class="principal3">
+        <div class="info3">
+            <h2 class="subtitle3">Registros Mensuales<br> al Alcance de tu Mano</h2>
+            <p class="text3">Accede a reportes detallados  mes a mes. Visualiza<br> 
+            el comportamiento ambiental  y analiza las <br>
+            tendencias  para tomar decisiones estratégicas en <br>
+            el cuidado del ambiente laboral.</p>
+        </div>
     </div>
 </section>
 
