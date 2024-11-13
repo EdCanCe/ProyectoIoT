@@ -50,6 +50,9 @@ echo renderHeader($info["proyect"]["name"], 0, array("dataReloadCall", "redirect
             tendencias  para tomar decisiones estratégicas en <br>
             el cuidado del ambiente laboral.</p>
         </div>
+        <div>
+            
+        </div>
     </div>
 </section>
 

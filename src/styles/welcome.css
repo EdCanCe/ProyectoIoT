@@ -15,6 +15,7 @@ section.first, .second{
     overflow: hidden;
 }
 
+
 .image_back{
     position: absolute; /*Hijo*/
     top: 0;
