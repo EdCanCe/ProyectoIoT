@@ -31,7 +31,7 @@ int randomNumber(int n){
 	return x;
 }
 
-string encript(string raw, int size){
+string encrypt(string raw, int size){
     vector<ull> v(size, 0);
     string s="";
     ull aux;
@@ -217,7 +217,7 @@ int main(){
         string name=names[randomNumber(names.size())];
         string mlastname=lastNames[randomNumber(lastNames.size())];
         string flastname=lastNames[randomNumber(lastNames.size())];
-        users.push_back(User(i+1, name, flastname, mlastname, encript(name.substr(0,5)+flastname.substr(0,6)+mlastname.substr(0,6), 20), encript(name, 15)));
+        users.push_back(User(i+1, name, flastname, mlastname, encrypt(name.substr(0,5)+flastname.substr(0,6)+mlastname.substr(0,6), 20), encrypt(name, 15)));
         users[i].printInsertSQL();
     }
     cout<<"\n";    
@@ -225,7 +225,7 @@ int main(){
     vector<Device> devices;
     for(int i=0; i<15; i++){
         string place=places[randomNumber(places.size())];
-        devices.push_back(Device(i+1, encript(getCurrentTimeString(), 20), place));
+        devices.push_back(Device(i+1, encrypt(getCurrentTimeString(), 20), place));
         devices[i].printInsertSQL();
     }
     cout<<"\n";  

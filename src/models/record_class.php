@@ -1,5 +1,5 @@
 <?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
-require_once "../utils/encript.php"; //Enlace al documento que encripta las keys
+require_once "../utils/encrypt.php"; //Enlace al documento que encripta las keys
 require_once "user_class.php"; //Enlace al documento que define la clase usuario
 require_once "device_class.php"; //Enlace al documento que define la clase de dispositivo
 
