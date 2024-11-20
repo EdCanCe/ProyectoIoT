@@ -141,7 +141,7 @@ class User{
         global $connection;
         $query="";
         if(isset($this->idUser)) $query = "SELECT COUNT(IDUser) AS NUMS FROM User WHERE IDUser=$this->idUser";
-        else $query = "SELECT COUNT(IDUser) AS NUMS FROM User WHERE Username=$this->username";
+        else $query = "SELECT COUNT(IDUser) AS NUMS FROM User WHERE Username='$this->username'";
         $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
         if($result["NUMS"]==1) return true;
         return false;
@@ -154,14 +154,14 @@ class User{
         global $connection;
         $query="";
         if(isset($this->idUser)) $query = "SELECT * FROM User WHERE IDUser=$this->idUser";
-        else $query = "SELECT * FROM User WHERE Username=$this->username";
+        else $query = "SELECT * FROM User WHERE Username='$this->username'";
         $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
         $this->idUser = $result["IDUser"];
         $this->username = $result["Username"];
         $this->givenName = $result["GivenName"];
         $this->fLastName = $result["FLastName"];
         $this->mLastName = ($result["MLastName"] === null) ? null : $result["MLastName"];
-        $this->accessKey = $result["AcessKey"];
+        $this->accessKey = $result["AccessKey"];
     }
 
     /**
@@ -174,7 +174,7 @@ class User{
         else $query = "INSERT INTO User(GivenName, FLastName, Username, Accesskey) VALUES('$this->givenName', '$this->fLastName', '$this->username', '$this->accessKey')";
         mysqli_query($connection, $query); //Añade a la base de datos
 
-        $query = "SELECT IDUser FROM User WHERE Username=$this->username";
+        $query = "SELECT IDUser FROM User WHERE Username='$this->username'";
         $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
         $this->idUser = $result["IDUser"];
     }

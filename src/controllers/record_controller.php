@@ -1,5 +1,4 @@
 <?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
-//aquí hago las inserciones y la obtención de los datos, lo hago con un if isset de los datos para ver si meto datos u obtengo
 require_once "../utils/offset_adress.php"; //Carga la función que quita los offset en las direcciones
 
 if(isset($_GET["id"])){
