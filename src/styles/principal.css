@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Maitree:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    background-color: black;
+    margin: 45px;
+    margin-top: 0px;
+}
+
+/* Header */
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+}
+
+.btn-container {
+    display: flex; 
+    gap: 10px; 
+}
+
+.btn{
+    padding: 4px 40px 4px 40px;
+    border-radius: 16px;
+    text-decoration: none;
+    border: none;
+    margin: 20px 40px 20px 0;
+}
+
+.button-logIn, .button-signUp{
+    background-color: rgba(244, 182, 128, 0.67);
+    color: white;
+    font-family: "Afacad", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.button-logIn:hover, .button-signUp:hover{
+    background-color: rgba(144, 114, 88, 0.67);
+    font-size: 18px;
+    color: white;
+    padding: 6px 44px 6px 44px;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo{
+    height: 120px;
+}
+
+.logo-text{
+    color: white;
+    font-family: "Afacad", sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+/* Seccion principal que muestra los datos en timpo real */
+
+section.show-data{
+    position: relative; /*Padre*/
+    background-color: #271300;
+    height: 80vh; /*Ocupar todo el tamaño de pantalla*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.image_back{
+    position: absolute; /*Hijo*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-image: url(./images/principal/Back.png);
+    background-size: cover; /*Cubirir toda la sección con la imagen*/
+    background-position: center;
+    opacity: 0.50;
+    z-index: 1; /*indica que la imagen va 'enfrente' de la sección*/
+}
+
+.back{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    background-color: black;
+    background-size: cover; 
+    z-index: 2;
+}
+
+.principal{
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: -20px;
+    z-index: 3;
+}
+
+.name-room{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 48px;
+    font-weight: 500;
+    margin: 0;
+    z-index: 2;
+}
+
+/* Contenedor general de las tarjetas */
+
+.container-cards{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 30px;
+    margin-top: 5%;
+}
+
+/* Contendedores individuales para cada tarjeta */
+
+.card-ppm, .card-humidity, .card-temperature{
+    background-color: #22201F;
+    padding: 20px 34px 20px 34px;
+    color: white;
+    border-radius: 40px;
+}
+
+.ppm-title, .humidity-title, .temperature-title{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+/* Tarjetas individuales */
+
+.ppm-indicator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -20%;
+}
+
+.humidity-indicator, .temperature-indicator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -25%;
+}
+
+.current-ppm{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px;
+    margin-top: 5%;
+}
+
+.current-humidity{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 5%;
+    gap: 15px;
+}
+
+.current-temperature{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 5%;
+}
+
+.current{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.level-text{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.level-container{
+    background-color: #5C5C5C;
+    padding: 5px 0;
+    border-radius: 20px;
+    margin-top: -5%;
+}
+
+.level{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
+
+.text-indicator-ppm{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -8%;
+}
+
+.text-indicator-humidity{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -15%;
+}
+
+.text-indicator-temperature{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -15%;
+}
+
+.text-resume{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: -3%;
+}
+
+.row-titles-ppm, .row-values-ppm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    margin-left: -8%;
+    margin-right: 5%;
+    margin-top: -2%;
+}
+
+.row-titles-humidity, .row-values-humidity{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    margin-left: -10%;
+    margin-top: -2%;
+}
+
+.row-titles-temperature, .row-values-temperature{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    margin-left: -10%;
+    margin-top: -2%;
+}
+
+.row-titles-ppm, .row-titles-humidity, .row-titles-temperature{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.row-values-ppm, .row-values-humidity, .row-values-temperature{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: -5%;
+}

@@ -29,38 +29,38 @@ echo renderHeader($info["proyect"]["name"], 0, array("dataReloadCall", "redirect
     <div class="principal2">
         <div class="imagecollection2">
             <img src="<?php echo $adressSetter?>src/styles/images/welcome/image5.png" alt="" class="image5">
-                <img src="<?php echo $adressSetter?>src/styles/images/welcome/image6.png" alt="" class="image6">
-                <img src="<?php echo $adressSetter?>src/styles/images/welcome/image7.jpg" alt="" class="image7">
-            </div>
-            <div class="info2">
-                <h2 class="subtitle2">Monitorea tu lugar de trabajo</h2>
-                <p class="text2">Obtén datos precisos de temperatura,<br> 
-                humedad y calidad del aire en cada espacio.<br>
-                Mantente informado sobre el ambiente<br>
-                de trabajo en tiempo real.</p>
-            </div>
+            <img src="<?php echo $adressSetter?>src/styles/images/welcome/image6.png" alt="" class="image6">
+            <img src="<?php echo $adressSetter?>src/styles/images/welcome/image7.jpg" alt="" class="image7">
         </div>
-    </section>
+        <div class="info2">
+            <h2 class="subtitle2">Monitorea tu lugar de trabajo</h2>
+            <p class="text2">Obtén datos precisos de temperatura,<br> 
+            humedad y calidad del aire en cada espacio.<br>
+            Mantente informado sobre el ambiente<br>
+            de trabajo en tiempo real.</p>
+        </div>
+    </div>
+</section>
 
-    <section class="third">
-        <div class="principal3">
-            <div class="info3">
-                <h2 class="subtitle3">Registros mensuales<br> al alcance de tu mano</h2>
-                <p class="text3">Accede a reportes detallados  mes a mes. Visualiza<br> 
-                el comportamiento ambiental  y analiza las <br>
-                tendencias  para tomar decisiones estratégicas en <br>
-                el cuidado del ambiente laboral.</p>
-            </div>
-            <div class="imagecollection3">
-                <img src="<?php echo $adressSetter?>src/styles/images/welcome/image8.png" alt="" class="image8">
-                <img src="<?php echo $adressSetter?>src/styles/images/welcome/image9.png" alt="" class="image9">
-                <img src="<?php echo $adressSetter?>src/styles/images/welcome/image10.png" alt="" class="image10">
+<section class="third">
+    <div class="principal3">
+        <div class="info3">
+            <h2 class="subtitle3">Registros mensuales<br> al alcance de tu mano</h2>
+            <p class="text3">Accede a reportes detallados  mes a mes. Visualiza<br> 
+            el comportamiento ambiental  y analiza las <br>
+            tendencias  para tomar decisiones estratégicas en <br>
+            el cuidado del ambiente laboral.</p>
+        </div>
+        <div class="imagecollection3">
+            <img src="<?php echo $adressSetter?>src/styles/images/welcome/image8.png" alt="" class="image8">
+            <img src="<?php echo $adressSetter?>src/styles/images/welcome/image9.png" alt="" class="image9">
+            <img src="<?php echo $adressSetter?>src/styles/images/welcome/image10.png" alt="" class="image10">
 
                 
-                <div class="graphImg">
-                        <img src="<?php echo $adressSetter?>src/styles/images/welcome/image11.png" alt="" class="graph">
-                </div>
+            <div class="graphImg">
+                <img src="<?php echo $adressSetter?>src/styles/images/welcome/image11.png" alt="" class="graph">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 

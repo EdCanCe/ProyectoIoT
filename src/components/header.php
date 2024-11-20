@@ -35,7 +35,17 @@ HTML;
     }
 
     //Cierra el head e inicia el body con el header
-    $html = $html . "</head><body><header class=''>";
+    $html .= <<<HTML
+        </head>
+        <body>
+            <header class='header'>
+                <div class="logo-container">
+                    <img src="{$adressSetter}src/styles/images/header/logo.png" alt="Logo de la página" class="logo">
+                    <h3 class="logo-text">AIRALYZE</h3>
+                </div>
+
+                <div class="btn-container">
+HTML;
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
     if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
@@ -43,12 +53,15 @@ HTML;
         $html = $html . renderButton('redirect("' . $adressSetter . 'devices")', "MY DEVICES", "");
         $html = $html . renderButton('redirect("' . $adressSetter . 'profile")', "MY PROFILE", "");
     }else{ //Despliega esto si el usuario NO inició sesión
-        $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "LOG IN", "");
-        $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "SIGN UP", "");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "Registro", " btn button-logIn");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "Iniciar Sesión", " btn button-signUp");
     }
 
     //Cierra el header
-    $html = $html . "</header>";
+    $html .= <<<HTML
+                </div>
+            </header>
+HTML;
 
     return $html;
 }

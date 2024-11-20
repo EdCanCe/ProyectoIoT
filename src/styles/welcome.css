@@ -2,7 +2,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
 
 body{
-    margin: 0; /* Para eliminar márgenes por defecto */
+    background-color: black;
+    margin: 45px;
+    margin-top: 0px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+}
+
+.btn-container {
+    display: flex; 
+    gap: 10px; 
+}
+
+.btn{
+    padding: 4px 40px 4px 40px;
+    border-radius: 16px;
+    text-decoration: none;
+    border: none;
+    margin: 20px 40px 20px 0;
+}
+
+.button-logIn, .button-signUp{
+    background-color: rgba(244, 182, 128, 0.67);
+    color: white;
+    font-family: "Afacad", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.button-logIn:hover, .button-signUp:hover{
+    background-color: rgba(144, 114, 88, 0.67);
+    font-size: 18px;
+    color: white;
+    padding: 6px 44px 6px 44px;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo{
+    height: 120px;
+}
+
+.logo-text{
+    color: white;
+    font-family: "Afacad", sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: 500;
 }
 
 section.first, .second{
@@ -13,6 +71,7 @@ section.first, .second{
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border-radius: 50px;
 }
 
 
@@ -186,6 +245,7 @@ section.third{
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border-radius: 50px;
 }
 
 .imagecollection3{
