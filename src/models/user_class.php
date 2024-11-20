@@ -170,8 +170,8 @@ class User{
     public function addToDB(){
         global $connection;
         $query="";
-        if(isset($this->mLastName)) $query = "INSERT INTO User(GivenName, FLastName, MLastName, Username, Accesskey) VALUES('$this->givenName', '$this->fLastName', '$this->mLastName', '$this->username', '$this->accessKey')";
-        else $query = "INSERT INTO User(GivenName, FLastName, Username, Accesskey) VALUES('$this->givenName', '$this->fLastName', '$this->username', '$this->accessKey')";
+        if(isset($this->mLastName)) $query = "INSERT INTO User(GivenName, FLastName, MLastName, Username, AccessKey) VALUES ('$this->givenName', '$this->fLastName', '$this->mLastName', '$this->username', '$this->accessKey')";
+        else $query = "INSERT INTO User(GivenName, FLastName, Username, AccessKey) VALUES ('$this->givenName', '$this->fLastName', '$this->username', '$this->accessKey')";
         mysqli_query($connection, $query); //Añade a la base de datos
 
         $query = "SELECT IDUser FROM User WHERE Username='$this->username'";
