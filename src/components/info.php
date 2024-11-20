@@ -16,8 +16,8 @@ $json = '{
         }
     },
     "proyect": {
-        "name": "FALTA DEFINIR NOMBRE DE PROYECTO",
-        "description": "FALTA DEFINIR DESCRIPCIÓN DE PROYECTO"
+        "name": "AIRALYZE",
+        "description": "AIRALYZE"
     }
 }';
 
