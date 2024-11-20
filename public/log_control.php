@@ -7,20 +7,20 @@ function logout(){
     renderHeader("Cerrar Sesión", 1, ["JS"], ["CSS"]);
     session_destroy();
     session_start();
-    redirect("home", 0);
+    redirect("home");
 }
 
 function login(){
     renderHeader("Iniciar Sesión", 1, ["JS"], ["CSS"]);
     if(isset($_SESSION["IDUser"])){
-        redirect("error/No+se+puede+iniciar+sesión.+Cierre+sesión+porfavor", 0);
+        redirect("error/No+se+puede+iniciar+sesión.+Cierre+sesión+porfavor");
     }else{
         session_destroy();
         session_start(); 
         $adressSetter = offsetAdress(0); ?>
         <form action="<?php echo $adressSetter?>src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
-            <input type="text" name="Username" required>
-            <input type="password" name="AccessKey" required>
+            <input placeholder="Nombre de usuario" type="text" name="Username" required>
+            <input placeholder="Contraseña" type="password" name="AccessKey" required>
             <button type="submit">Iniciar Sesión</button> 
         </form>
     <?php }
@@ -29,18 +29,18 @@ function login(){
 function createAccount(){
     renderHeader("Crear Cuenta", 1, ["JS"], ["CSS"]);
     if(isset($_SESSION["IDUser"])){
-        redirect("error/No+se+puede+crear+una+cuenta.+Cierre+sesión+porfavor", 0);
+        redirect("error/No+se+puede+crear+una+cuenta.+Cierre+sesión+porfavor");
     }else{
         session_destroy();
         session_start();
         $adressSetter = offsetAdress(0); ?>
         <form action="<?php echo $adressSetter?>src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
-            <input type="text" name="Username" required>
-            <input type="text" name="GivenName" required>
-            <input type="text" name="FLastName" required>
-            <input type="text" name="MLastName">
-            <input type="password" name="AccessKey" required>
-            <button type="submit">Iniciar Sesión</button> 
+            <input placeholder="Nombre de usuario" type="text" name="Username" required>
+            <input placeholder="Nombre de pila" type="text" name="GivenName" required>
+            <input placeholder="Apellido paterno" type="text" name="FLastName" required>
+            <input placeholder="Apellido materno" type="text" name="MLastName">
+            <input placeholder="Contraseña" type="password" name="AccessKey" required>
+            <button type="submit">Crear cuenta</button> 
         </form>
     <?php }
 }
