@@ -295,3 +295,53 @@ section.show-data{
     font-weight: 600;
     margin-top: -5%;
 }
+
+/* Statistics section */
+
+section.statistics{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 36px;
+}
+
+.view-register{
+    font-family: "Afacad", sans-serif;
+    color: white;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.options-recod{
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-option{
+    background-color: #22201F;
+    color: white;
+    font-family: "Afacad", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 6px 36px 6px 36px;
+    margin: 20px 40px 20px 0;
+    border-radius: 16px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-option:hover{
+    background-color: #787877;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    border: 1px solid #bfbfbf;
+    padding: 8px 40px 8px 40px;
+}
