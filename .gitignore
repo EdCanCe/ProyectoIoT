@@ -1,5 +1,6 @@
 database.php
 db_connection.php
+encrypt.php
 .vscode
 *.out
 *.x

@@ -7,17 +7,17 @@ function logout(){
     renderHeader("Cerrar Sesión", 1, ["JS"], ["CSS"]);
     session_destroy();
     session_start();
-    redirect("home");
+    redirect("home", 0);
 }
 
 function login(){
     renderHeader("Iniciar Sesión", 1, ["JS"], ["CSS"]);
     if(isset($_SESSION["IDUser"])){
-        redirect("error/No+se+puede+iniciar+sesión.+Cierre+sesión+porfavor");
+        redirect("error/No+se+puede+iniciar+sesión.+Cierre+sesión+porfavor", 0);
     }else{
         session_destroy();
         session_start(); 
-        $adressSetter = offsetAdress(1); ?>
+        $adressSetter = offsetAdress(0); ?>
         <form action="<?php echo $adressSetter?>src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
             <input type="text" name="Username" required>
             <input type="password" name="AccessKey" required>
@@ -29,11 +29,11 @@ function login(){
 function createAccount(){
     renderHeader("Crear Cuenta", 1, ["JS"], ["CSS"]);
     if(isset($_SESSION["IDUser"])){
-        redirect("error/No+se+puede+crear+una+cuenta.+Cierre+sesión+porfavor");
+        redirect("error/No+se+puede+crear+una+cuenta.+Cierre+sesión+porfavor", 0);
     }else{
         session_destroy();
         session_start();
-        $adressSetter = offsetAdress(1); ?>
+        $adressSetter = offsetAdress(0); ?>
         <form action="<?php echo $adressSetter?>src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
             <input type="text" name="Username" required>
             <input type="text" name="GivenName" required>
