@@ -70,9 +70,9 @@ body{
     font-weight: 500;
 }
 
-section.log-in{
+section.create-account{
     position: relative; /*Padre*/
-    background-color: #000000;
+    background-color: #2B1500;
     height: 80vh; /*Ocupar todo el tamaño de pantalla*/
     display: flex;
     justify-content: center;
@@ -87,14 +87,14 @@ section.log-in{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(./images/login/Back.png);
+    background-image: url(./images/createAccount/Back.png);
     background-size: cover; /*Cubirir toda la sección con la imagen*/
     background-position: center;
-    opacity: 0.50;
+    opacity: 0.35;
     z-index: 1; /*indica que la imagen va 'enfrente' de la sección*/
 }
 
-.principal{
+.container{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -102,34 +102,29 @@ section.log-in{
     z-index: 2;
 }
 
-.title-login{
+.title-createAccount{
     font-family: "Afacad", sans-serif;
     color: white;
     font-size: 48px;
     font-weight: 500;
     margin: 0;
-    margin-bottom: 30px;
+    text-align: center;
 }
 
-.form-login{
+.form-createAccount{
     display: flex;
     flex-direction: column;
     gap:15px;
-    width: 370px;
+    width: 550px;
 }
 
-.user-container, .password-container{
+.form-row-lastname{
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
+    flex-direction: row; 
+    justify-content: space-between;
 }
 
-.user-container svg, .password-container svg {
-    align-self: center; /* Centra los íconos */
-}
-
-.user, .password{
+.name, .username, .password{
     font-family: "Afacad", sans-serif;
     font-size: 20px;
     color: #ffffff;
@@ -137,9 +132,22 @@ section.log-in{
     font-weight: 400;
     border: none;
     outline: none;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
     width: 100%;
-    padding: 20px 0;
+    padding: 15px 0;
+}
+
+.Flastname, .Mlastname{
+    font-family: "Afacad", sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: transparent;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ffffff;
+    width: 46%;
+    padding: 15px 0;
 }
 
 ::placeholder{
@@ -153,7 +161,7 @@ input:focus::placeholder{
     color:transparent;
 }
 
-.user:focus, .password:focus{
+.name:focus, .Flastname:focus, .Mlastname:focus, .username:focus, .password:focus{
     font-family: "Afacad", sans-serif;
     color: #ffffff;
     font-size: 20px;
@@ -163,7 +171,7 @@ input:focus::placeholder{
     padding: 5px 0;
 }
 
-.btn-login{
+.btn-createaccount{
     background-color: #7B412B;
     font-family: "Afacad", sans-serif;
     color: #ffffff;
@@ -173,19 +181,19 @@ input:focus::placeholder{
     width: 130px;
     border-radius: 10px;
     padding: 6px 20px;
-    margin: 20px auto;
+    margin: 16px auto;
     display: block;
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }
 
-.btn-login:hover{
+.btn-createaccount:hover{
     background-color: #915741;
     box-shadow: 8px 15px 15px rgba(0, 0, 0, 0.25);
     transform: translateY(-2px);
     cursor: pointer;
 }
 
-.link-createAccount{
+.link-login{
     font-family: "Afacad", sans-serif;
     color: #ffffff;
     font-size: 16px;
