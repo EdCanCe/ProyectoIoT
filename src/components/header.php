@@ -51,12 +51,12 @@ HTML;
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
     if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
-        $html = $html . renderButton('redirect("' . $adressSetter . 'logout")', "LOG OUT", "");
-        $html = $html . renderButton('redirect("' . $adressSetter . 'devices")', "MY DEVICES", "");
-        $html = $html . renderButton('redirect("' . $adressSetter . 'profile")', "MY PROFILE", "");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'logout")', "LOG OUT", "btn-2 button-logout");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'devices")', "MY DEVICES", "btn-2 button-devices");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'profile")', "MY PROFILE", "btn-2 button-profile");
     }else{ //Despliega esto si el usuario NO inició sesión
-        $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "Iniciar Sesión", " btn button-logIn");
-        $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "Crear cuenta", " btn button-signUp");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "Iniciar Sesión", "btn button-logIn");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "Crear cuenta", "btn button-signUp");
     }
 
     //Cierra el header

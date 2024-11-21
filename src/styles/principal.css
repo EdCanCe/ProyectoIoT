@@ -30,8 +30,16 @@ body{
     margin: 20px 40px 20px 0;
 }
 
-.button-logIn, .button-signUp{
-    background-color: rgba(244, 182, 128, 0.67);
+.btn-2{
+    padding: 4px 30px 4px 30px;
+    border-radius: 16px;
+    text-decoration: none;
+    border: none;
+    margin: 20px 10px 20px 0;
+}
+
+.button-logIn, .button-signUp, .button-logout, .button-devices, .button-profile{
+    background-color: #53361D;
     color: white;
     font-family: "Afacad", sans-serif;
     font-size: 16px;
@@ -40,10 +48,17 @@ body{
 }
 
 .button-logIn:hover, .button-signUp:hover{
-    background-color: rgba(144, 114, 88, 0.67);
+    background-color: #845231;
     font-size: 18px;
     color: white;
     padding: 6px 44px 6px 44px;
+}
+
+.button-logout:hover, .button-devices:hover, .button-profile:hover{
+    background-color: #845231;
+    font-size: 18px;
+    color: white;
+    padding: 5px 36px 5px 36px;
 }
 
 .logo-container{
@@ -55,12 +70,6 @@ body{
 
 .logo{
     height: 120px;
-    transition: all 0.3s ease;
-}
-
-.logo:hover{
-    
-    height: 130px;
 }
 
 .logo-text{
