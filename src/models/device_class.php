@@ -1,9 +1,9 @@
-<?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
-require_once "../utils/encrypt.php"; //Enlace al documento que encripta las keys
-require_once "user_class.php"; //Enlace al documento que define la clase usuario
+<?php
+require_once "../config/db_connection.php"; // Enlace al documento que se conecta a la base de datos
+require_once "../utils/encrypt.php"; // Enlace al documento que encripta las keys
 
 /**
- * Definición de la clase Device, la cuál
+ * Definición de la clase Device, la cual
  * contendrá sus atributos y métodos.
  */
 class Device{
@@ -11,32 +11,56 @@ class Device{
     private $accessKey;
     private $place;
 
-    public function __construct($idDevice, $accessKey, $place);
+    public function __construct($newIdDevice = null, $newAccessKey = null, $newPlace = null){
+        $this->idDevice = $newIdDevice;
+        $this->accessKey = isset($newAccessKey) ? $newAccessKey : encrypt(date('y/m/d-H:i'), 20);
+        $this->place = $newPlace;
+    }
 
-    public function getIdDevice();
-    public function getPlace();
-    public function getAccessKey();
+    public function getIdDevice(){
+        return $this->idDevice;
+    }
 
-    public function setAccessKey($accessKey);
-    public function setPlace($place);
+    public function getPlace(){
+        return $this->place;
+    }
 
-    public function compareAccessKey($accessKeyB);
+    public function setAccessKey(){
+        $this->accessKey = encrypt(date('y/m/d-H:i'), 20);
+    }
 
-    public function itExists();
-    public function addToDB();
-    public function loadFromDB($identifier);
-};
+    public function setPlace($newPlace){
+        $this->place = $newPlace;
+    }
 
-/**
- * Definición de la clase UserDevice, la cuál
- * contendrá sus atributos y métodos.
- */
-class UserDevice {
-    private $idUser;
-    private $idDevice;
+    public function compareAccessKey($accessKeyB){
+        return $this->accessKey === $accessKeyB;
+    }
 
-    public function __construct($idUser, $idDevice);
+    public function itExists(){
+        global $connection;
+        $query = "SELECT COUNT(IDDevice) AS NUMS FROM Device WHERE IDDevice=$this->idDevice AND AccessKey='$this->accessKey'";
+        $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
+        if($result["NUMS"]==1) return true;
+        return false;
+    }
 
-    public function getIdUser();
-    public function getIdDevice();
+    public function addToDB(){
+        global $connection;
+        $query = "INSERT INTO Device (AccessKey, Place) VALUES ('$this->accessKey', '$this->place')";
+        mysqli_query($connection, $query); // Añade el dispositivo a la base de datos
+
+        $query = "SELECT IDDevice FROM Device WHERE AccessKey='$this->accessKey'"; //El AccessKey es el momento en que se generó el objeto
+        $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
+        $this->idDevice = $result["IDDevice"];
+    }
+
+    public function loadFromDB(){
+        global $connection;
+        $query = "SELECT * FROM Device WHERE IDDevice=$this->idDevice";
+        $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
+        $this->idDevice = $result["IDDevice"];
+        $this->accessKey = $result["AccessKey"];
+        $this->place = $result["Place"];
+    }
 }

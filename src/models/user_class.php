@@ -1,5 +1,6 @@
 <?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
 require_once "../utils/encrypt.php"; //Enlace al documento que encripta las keys
+require_once "device_class.php"; // Enlace al documento que define la clase usuario
 
 /**
  * Definición de la clase User, la cuál
@@ -177,5 +178,53 @@ class User{
         $query = "SELECT IDUser FROM User WHERE Username='$this->username'";
         $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
         $this->idUser = $result["IDUser"];
+    }
+}
+
+/**
+ * Definición de la clase UserDevice, la cual
+ * contendrá sus atributos y métodos.
+ */
+class UserDevice{
+    private $idUser;
+    private $idDevice;
+
+    public function __construct($newIdUser = null, $newIdDevice = null){
+        $this->idUser = $newIdUser;
+        $this->idDevice = $newIdDevice;
+    }
+
+    public function getIdUser(){
+        return $this->idUser;
+    }
+
+    public function getIdDevice(){
+        return $this->idDevice;
+    }
+
+    public function addToDB(){
+        global $connection;
+        $query = "INSERT INTO User_Device (IDUser, IDDevice) VALUES ($this->idUser, $this->idDevice)";
+        mysqli_query($connection, $query);
+    }
+
+    public function itExists(){
+        global $connection;
+        $query = "SELECT COUNT(IDDevice) AS NUMS FROM User_Device WHERE IDUser=$this->idUser AND IDDevice=$this->idDevice";
+        $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
+        if($result["NUMS"]==1) return true;
+        return false;
+    }
+
+    public function getDevices(){
+        global $connection;
+        $devices = array();
+        $query = "SELECT Device.IDDevice, Device.AccessKey, Device.Place FROM Device, User_Device WHERE User_Device.IDUser=$this->idUser AND User_Device.IDDevice=Device.IDDevice";
+        $query = mysqli_query($connection, $query);
+        while($row=mysqli_fetch_assoc($query)){
+            $devices[] = new Device($row["IDDevice"], $row["AccessKey"], $row["Place"]);
+        }
+
+        return $devices;
     }
 }
