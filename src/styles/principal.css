@@ -55,6 +55,12 @@ body{
 
 .logo{
     height: 120px;
+    transition: all 0.3s ease;
+}
+
+.logo:hover{
+    
+    height: 130px;
 }
 
 .logo-text{
@@ -342,6 +348,6 @@ section.statistics{
     color: white;
     font-size: 20px;
     font-weight: 500;
-    border: 1px solid #bfbfbf;
+    border: 1px solid #bdbdbd;
     padding: 8px 40px 8px 40px;
 }

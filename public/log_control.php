@@ -11,18 +11,20 @@ function logout(){
 }
 
 function login(){
-    renderHeader("Iniciar Sesión", 1, ["JS"], ["CSS"]);
+    renderHeader("Iniciar Sesión", 1, ["JS"], ["login"]);
     if(isset($_SESSION["IDUser"])){
         redirect("error/No+se+puede+iniciar+sesión.+Cierre+sesión+porfavor");
     }else{
         session_destroy();
         session_start(); 
         $adressSetter = offsetAdress(0); ?>
+        <h2 class="title-iniciarSesion">Iniciar Sesión</h2>
         <form action="<?php echo $adressSetter?>src/controllers/user_controller.php" method="post" enctype="multipart/form-data">
             <input placeholder="Nombre de usuario" type="text" name="Username" required>
             <input placeholder="Contraseña" type="password" name="AccessKey" required>
             <button type="submit">Iniciar Sesión</button> 
         </form>
+        <p>¿No tienes cuenta aún?<a href="#">Regístrate</a></p>
     <?php }
 }
 

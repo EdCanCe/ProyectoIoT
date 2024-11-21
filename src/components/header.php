@@ -40,7 +40,9 @@ HTML;
         <body>
             <header class='header'>
                 <div class="logo-container">
-                    <img src="{$adressSetter}src/styles/images/header/logo.png" alt="Logo de la página" class="logo">
+                    <a href="{$adressSetter}home">
+                        <img src="{$adressSetter}src/styles/images/header/logo.png" alt="Logo AIRALYZE" class="logo">
+                    </a>
                     <h3 class="logo-text">AIRALYZE</h3>
                 </div>
 
@@ -53,14 +55,14 @@ HTML;
         $html = $html . renderButton('redirect("' . $adressSetter . 'devices")', "MY DEVICES", "");
         $html = $html . renderButton('redirect("' . $adressSetter . 'profile")', "MY PROFILE", "");
     }else{ //Despliega esto si el usuario NO inició sesión
-        $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "Registro", " btn button-logIn");
-        $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "Iniciar Sesión", " btn button-signUp");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "Iniciar Sesión", " btn button-logIn");
+        $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "Crear cuenta", " btn button-signUp");
     }
 
     //Cierra el header
     $html .= <<<HTML
                 </div>
-            </header>
+        </header>
 HTML;
 
     return $html;
