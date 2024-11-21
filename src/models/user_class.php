@@ -189,25 +189,51 @@ class UserDevice{
     private $idUser;
     private $idDevice;
 
+    /**
+     * Constructor de la clase UserDevice.
+     * Inicializa los valores del usuario y el dispositivo con los parámetros proporcionados.
+     *
+     * @param int $newIdUser El ID del usuario
+     * @param int $newIdDevice El ID del dispositivo
+     */
     public function __construct($newIdUser = null, $newIdDevice = null){
         $this->idUser = $newIdUser;
         $this->idDevice = $newIdDevice;
     }
 
+    /**
+     * Obtiene el ID del usuario asociado a esta relación.
+     *
+     * @return int ID del usuario
+     */
     public function getIdUser(){
         return $this->idUser;
     }
 
+    /**
+     * Obtiene el ID del dispositivo asociado a esta relación.
+     *
+     * @return int ID del dispositivo
+     */
     public function getIdDevice(){
         return $this->idDevice;
     }
 
+    /**
+     * Inserta la relación usuario-dispositivo en la base de datos.
+     */
     public function addToDB(){
         global $connection;
         $query = "INSERT INTO User_Device (IDUser, IDDevice) VALUES ($this->idUser, $this->idDevice)";
         mysqli_query($connection, $query);
     }
 
+    /**
+     * Verifica si la relación usuario-dispositivo ya existe en la base de datos.
+     * Busca en la tabla `User_Device` por una combinación del ID del usuario y del dispositivo.
+     *
+     * @return bool Verdadero si la relación existe, falso en caso contrario
+     */
     public function itExists(){
         global $connection;
         $query = "SELECT COUNT(IDDevice) AS NUMS FROM User_Device WHERE IDUser=$this->idUser AND IDDevice=$this->idDevice";
@@ -216,12 +242,19 @@ class UserDevice{
         return false;
     }
 
+    /**
+     * Obtiene todos los dispositivos asociados a un usuario.
+     *
+     * @return array Lista de objetos `Device` asociados al usuario
+     */
     public function getDevices(){
         global $connection;
         $devices = array();
         $query = "SELECT Device.IDDevice, Device.AccessKey, Device.Place FROM Device, User_Device WHERE User_Device.IDUser=$this->idUser AND User_Device.IDDevice=Device.IDDevice";
         $query = mysqli_query($connection, $query);
-        while($row=mysqli_fetch_assoc($query)){
+
+        // Recorre los resultados y crea objetos Device
+        while($row = mysqli_fetch_assoc($query)){
             $devices[] = new Device($row["IDDevice"], $row["AccessKey"], $row["Place"]);
         }
 
