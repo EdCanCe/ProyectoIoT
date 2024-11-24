@@ -1,6 +1,7 @@
 <?php
 require_once "../config/db_connection.php"; // Enlace al documento que se conecta a la base de datos
 require_once "../utils/encrypt.php"; // Enlace al documento que encripta las keys
+require_once "record_class.php"; // Enlace al documento que define la clase de registros.
 
 /**
  * Definición de la clase Device, la cual
@@ -110,5 +111,107 @@ class Device{
         $this->idDevice = $result["IDDevice"];
         $this->accessKey = $result["AccessKey"];
         $this->place = $result["Place"];
+    }
+
+    /**
+     * Obtiene los registros vinculados a un dispositivo en el último día.
+     *
+     * @return array Lista de objetos `Records` asociados al dispositivo
+     */
+    public function getLastDay(){
+        global $connection; // Accede a la conexión de la base de datos
+        $records = array(); // Arreglo para almacenar los registros
+    
+        // Consulta para obtener los registros con ReadTime en las últimas 24 horas
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 1 DAY";
+        $result = mysqli_query($connection, $query);
+    
+        // Itera sobre los resultados y crea objetos Record para cada uno
+        while ($row = mysqli_fetch_assoc($result)) {
+            $records[] = new Record(newReadTime: $row["ReadTime"], newTemperature: $row["Temperature"], newHumidity: $row["Humidity"], newPpm: $row["Ppm"], newIdDevice: $row["IDDevice"]);
+        }
+    
+        return $records; // Devuelve el arreglo de objetos Record
+    }
+
+    /**
+     * Obtiene los registros vinculados a un dispositivo en los últimos 10 días.
+     *
+     * @return array Lista de objetos `Record` asociados al dispositivo.
+     */
+    public function getLast10Days() {
+        global $connection; // Accede a la conexión de la base de datos
+        $records = array(); // Arreglo para almacenar los registros
+
+        // Consulta para obtener los registros con ReadTime en los últimos 10 días
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 10 DAY";
+        $result = mysqli_query($connection, $query);
+
+        // Itera sobre los resultados y crea objetos Record para cada uno
+        while ($row = mysqli_fetch_assoc($result)) {
+            $records[] = new Record(
+                newReadTime: $row["ReadTime"],
+                newTemperature: $row["Temperature"],
+                newHumidity: $row["Humidity"],
+                newPpm: $row["Ppm"],
+                newIdDevice: $row["IDDevice"]
+            );
+        }
+
+        return $records; // Devuelve el arreglo de objetos Record
+    }
+
+    /**
+     * Obtiene los registros vinculados a un dispositivo en el último mes.
+     *
+     * @return array Lista de objetos `Record` asociados al dispositivo.
+     */
+    public function getLastMonth() {
+        global $connection; // Accede a la conexión de la base de datos
+        $records = array(); // Arreglo para almacenar los registros
+
+        // Consulta para obtener los registros con ReadTime en el último mes
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 1 MONTH";
+        $result = mysqli_query($connection, $query);
+
+        // Itera sobre los resultados y crea objetos Record para cada uno
+        while ($row = mysqli_fetch_assoc($result)) {
+            $records[] = new Record(
+                newReadTime: $row["ReadTime"],
+                newTemperature: $row["Temperature"],
+                newHumidity: $row["Humidity"],
+                newPpm: $row["Ppm"],
+                newIdDevice: $row["IDDevice"]
+            );
+        }
+
+        return $records; // Devuelve el arreglo de objetos Record
+    }
+
+    /**
+     * Obtiene los registros vinculados a un dispositivo en los últimos 3 meses.
+     *
+     * @return array Lista de objetos `Record` asociados al dispositivo.
+     */
+    public function getLast3Months() {
+        global $connection; // Accede a la conexión de la base de datos
+        $records = array(); // Arreglo para almacenar los registros
+
+        // Consulta para obtener los registros con ReadTime en los últimos 3 meses
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 3 MONTH";
+        $result = mysqli_query($connection, $query);
+
+        // Itera sobre los resultados y crea objetos Record para cada uno
+        while ($row = mysqli_fetch_assoc($result)) {
+            $records[] = new Record(
+                newReadTime: $row["ReadTime"],
+                newTemperature: $row["Temperature"],
+                newHumidity: $row["Humidity"],
+                newPpm: $row["Ppm"],
+                newIdDevice: $row["IDDevice"]
+            );
+        }
+
+        return $records; // Devuelve el arreglo de objetos Record
     }
 }
