@@ -147,7 +147,7 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
         </div>
     </section>
 
-    <script>setup(<?php echo $device->getIdDevice() ?>, <?php echo $device->getKey() ?>)</script>
+    <script>setup(<?php echo $device->getIdDevice() ?>, "<?php echo $device->getKey() ?>")</script>
 
 <?php }else{
     redirect("home"); //Como no tiene declarado el ID del dispositivo, mejor lo regresa a la pantalla de inicio.
