@@ -3,7 +3,7 @@ require_once "../src/components/header.php"; //Enlace al documento que genera lo
 require_once "../src/components/info.php"; //Enlace al documento con la información del proyecto
 $adressSetter = offsetAdress(0); //Quita el offset de la dirección
 
-echo renderHeader($info["proyect"]["name"], 0, array("dataReloadCall", "redirect"), array("welcome")); ?>
+echo renderHeader($info["proyect"]["name"], 0, array("redirect"), array("welcome")); ?>
 
 <section class="first">
     <div class="image_back"></div>
