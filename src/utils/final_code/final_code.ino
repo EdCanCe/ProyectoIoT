@@ -23,11 +23,11 @@ DHT dht11(DHT11_PIN, DHT11);
 //Variables globales
 float temp_hum_values[2];
 int dust_value;
-String baseURL = "https://edcance.dev/IoT/testInsert/";
+// String baseURL = "https://edcance.dev/IoT/testInsert/";
+String DeviceID = "1";
+Sring DeviceKey = "qyyF$SyjGym$rKM7eMsZ";
+String baseURL = "https://edcance.dev/IoT/addRecord/"+DeviceID+"/"+DeviceKey+"/";
 String url = "";
-// String DeviceID = "120";
-// Sring DeviceKey = "hhg643loajbdychasnbasbascabdmbcgsad";
-// String baseUrl = "https://edcance.dev/IoT/Insert/"+DeviceID+"/"+DeviceKey+"/";
 
 // Clave para WiFi
 const char * ssid = "Tec-IoT";
@@ -106,7 +106,8 @@ void loop() {
   temperature_humidity_sensor();
 
   // Iniciar tranferencia de datos
-  url = baseURL + String(temp_hum_values[0]) + "_" + String(temp_hum_values[1]) + "_" + String(dust_value);
+  // url = baseURL + String(temp_hum_values[0]) + "_" + String(temp_hum_values[1]) + "_" + String(dust_value);
+  url = baseURL + String(temp_hum_values[0]) + "/" + String(temp_hum_values[1]) + "/" + String(dust_value);
 
   // url = "https://edcance.dev/IoT/testInsert/" + "30°C" + "60%" + "90 ugr/cm3"
   // url = baseURL + "30/" + "60/" + "90"
