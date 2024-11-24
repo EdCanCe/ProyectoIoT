@@ -1,6 +1,9 @@
-<?php
-require_once "../config/db_connection.php"; // Enlace al documento que se conecta a la base de datos
-require_once "../utils/encrypt.php"; // Enlace al documento que encripta las keys
+<?php $extra="";
+if(isset($comingFrom)){
+    $extra="src/";
+}
+require_once "../".$extra."config/db_connection.php"; // Enlace al documento que se conecta a la base de datos
+require_once "../".$extra."utils/encrypt.php"; // Enlace al documento que encripta las keys
 require_once "record_class.php"; // Enlace al documento que define la clase de registros.
 
 /**
@@ -23,7 +26,7 @@ class Device{
      */
     public function __construct($newIdDevice = null, $newAccessKey = null, $newPlace = null){
         $this->idDevice = $newIdDevice;
-        $this->accessKey = isset($newAccessKey) ? $newAccessKey : encrypt(date('y/m/d-H:i'), 20);
+        $this->accessKey = $newAccessKey;
         $this->place = $newPlace;
     }
 
@@ -93,6 +96,7 @@ class Device{
      */
     public function addToDB(){
         global $connection;
+        if(!isset($this->accessKey)) $this->setAccessKey();
         $query = "INSERT INTO Device (AccessKey, Place) VALUES ('$this->accessKey', '$this->place')";
         mysqli_query($connection, $query); // Añade el dispositivo a la base de datos
 
@@ -153,7 +157,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
     
         // Consulta para obtener los registros con ReadTime en las últimas 24 horas
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 1 DAY";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 DAY";
         $result = mysqli_query($connection, $query);
     
         // Itera sobre los resultados y crea objetos Record para cada uno
@@ -180,7 +184,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
 
         // Consulta para obtener los registros con ReadTime en los últimos 10 días
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 10 DAY";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 10 DAY";
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
@@ -207,7 +211,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
 
         // Consulta para obtener los registros con ReadTime en el último mes
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 1 MONTH";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 MONTH";
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
@@ -234,7 +238,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
 
         // Consulta para obtener los registros con ReadTime en los últimos 3 meses
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ReadTime >= NOW() - INTERVAL 3 MONTH";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 3 MONTH";
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno

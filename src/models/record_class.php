@@ -1,5 +1,9 @@
-<?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
-require_once "../utils/encrypt.php"; //Enlace al documento que encripta las keys
+<?php $extra="";
+if(isset($comingFrom)){
+    $extra="src/";
+}
+require_once "../".$extra."config/db_connection.php"; // Enlace al documento que se conecta a la base de datos
+require_once "../".$extra."utils/encrypt.php"; // Enlace al documento que encripta las keys
 
 /**
  * Definición de la clase Record, la cuál
