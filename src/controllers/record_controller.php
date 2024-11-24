@@ -1,38 +1,37 @@
 <?php require_once "../config/db_connection.php"; //Enlace al documento que se conecta a la base de datos
 require_once "../utils/offset_adress.php"; //Carga la función que quita los offset en las direcciones
+require_once "../models/device_class.php"; //Carga la declaración de la clase del dispositivo
+require_once "../models/record_class.php"; //Carga la declaración de la clase de registros
 
-if(isset($_GET["id"])){
+if(isset($_GET["id"])){ //El ID del dispositivo
 
     $id=$_GET["id"];
     $key=$_GET["key"];
     
-    $query = "SELECT COUNT(IDDevice) AS NUMS FROM Device WHERE IDDevice=$id AND AccessKey='$key'";
-    $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
-    if($result["NUMS"]==1){ //SI existe ese dispositivo
+    $device=new Device($id, $key);
+    if($device->itExists()){ //SI existe ese dispositivo con esa llavae
         if(isset($_GET["temperature"])){ //Se va a añadir a la base de datos
             $temperature = $_GET["temperature"];
             $humidity = $_GET["humidity"];
             $ppm = $_GET["ppm"];
     
-            $query = "INSERT INTO Record(Temperature, Humidity, Ppm, IDDevice) VALUES ($temperature, $humidity, $ppm, $id);";
-            $result = mysqli_query($connection, $query);
+            $record = new Record(newTemperature: $temperature, newHumidity: $humidity, newPpm: $ppm, newIdDevice: $id);
+
+            $record->addToDB();
 
         }else{ //Se va a hacer un select
-    
+            $type=$_GET["type"];
+            if($type==0){
+                echo json_encode($device->getLastRow());
+            }else if($type==1){
+                echo json_encode($device->getLastDay());
+            }else if($type==2){
+                echo json_encode($device->getLast10Days());
+            }else if($type==3){
+                echo json_encode($device->getLastMonth());
+            }else if($type==4){
+                echo json_encode($device->getLast3Months());
+            }
         }
-    }else{ //Se pasó un dispositivo con una key incorrecta
-
-    }
-
-}else{ //eliminar esto pq es de una prueba
-    //Hace una consulta para obtener la última lectura de datos
-    $query = "SELECT datatest FROM mydata ORDER BY fecha DESC LIMIT 1";
-    $result = mysqli_query($connection, $query);
-
-    //Devuelve la última fila en un formato JSON
-    if ($row = mysqli_fetch_assoc($result)) {
-        echo json_encode($row);
-    } else {
-        echo json_encode(["error" => "No data found"]);
     }
 }

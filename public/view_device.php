@@ -6,7 +6,7 @@ require_once "../src/models/device_class.php"; //Enlace al documento que define 
 
 echo renderHeader($info["proyect"]["name"], 1, array("dataReloadCall", "redirect"), array("welcome"));
 
-$adressSetter = offsetAdress(0); //Quita el offset de la dirección
+$adressSetter = offsetAdress(1); //Quita el offset de la dirección
 
 if(isset($_GET["id"])){
     $id = $_GET["id"];

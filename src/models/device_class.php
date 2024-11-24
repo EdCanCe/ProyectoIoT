@@ -80,7 +80,9 @@ class Device{
      */
     public function itExists(){
         global $connection;
-        $query = "SELECT COUNT(IDDevice) AS NUMS FROM Device WHERE IDDevice=$this->idDevice AND AccessKey='$this->accessKey'";
+        $query="";
+        if(isset($this->accessKey)) $query = "SELECT COUNT(IDDevice) AS NUMS FROM Device WHERE IDDevice=$this->idDevice AND AccessKey='$this->accessKey'";
+        else $query = "SELECT COUNT(IDDevice) AS NUMS FROM Device WHERE IDDevice=$this->idDevice";
         $result = mysqli_fetch_assoc(mysqli_query($connection, $query));
         if($result["NUMS"]==1) return true;
         return false;
@@ -114,6 +116,34 @@ class Device{
     }
 
     /**
+     * Obtiene el registro más reciente vinculado a un dispositivo.
+     *
+     * @return array Datos del registro más reciente como un arreglo asociativo.
+     */
+    public function getLastRow(){
+        global $connection; // Accede a la conexión de la base de datos
+        $records=null;
+        
+        // Consulta para obtener el último registro basado en ReadTime
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice ORDER BY ReadTime DESC LIMIT 1";
+        $result = mysqli_query($connection, $query);
+
+        // Si hay resultados, devuelve el primer registro como un array asociativo
+        if ($row = mysqli_fetch_assoc($result)){
+            $records=[
+                "ReadTime" => $row["ReadTime"],
+                "Temperature" => $row["Temperature"],
+                "Humidity" => $row["Humidity"],
+                "Ppm" => $row["Ppm"],
+                "IDDevice" => $row["IDDevice"]
+            ];
+        }
+
+        return $records;
+    }
+
+
+    /**
      * Obtiene los registros vinculados a un dispositivo en el último día.
      *
      * @return array Lista de objetos `Records` asociados al dispositivo
@@ -127,8 +157,14 @@ class Device{
         $result = mysqli_query($connection, $query);
     
         // Itera sobre los resultados y crea objetos Record para cada uno
-        while ($row = mysqli_fetch_assoc($result)) {
-            $records[] = new Record(newReadTime: $row["ReadTime"], newTemperature: $row["Temperature"], newHumidity: $row["Humidity"], newPpm: $row["Ppm"], newIdDevice: $row["IDDevice"]);
+        while ($row = mysqli_fetch_assoc($result)){
+            $records[] = [
+                "ReadTime" => $row["ReadTime"],
+                "Temperature" => $row["Temperature"],
+                "Humidity" => $row["Humidity"],
+                "Ppm" => $row["Ppm"],
+                "IDDevice" => $row["IDDevice"]
+            ];
         }
     
         return $records; // Devuelve el arreglo de objetos Record
@@ -139,7 +175,7 @@ class Device{
      *
      * @return array Lista de objetos `Record` asociados al dispositivo.
      */
-    public function getLast10Days() {
+    public function getLast10Days(){
         global $connection; // Accede a la conexión de la base de datos
         $records = array(); // Arreglo para almacenar los registros
 
@@ -148,14 +184,14 @@ class Device{
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
-        while ($row = mysqli_fetch_assoc($result)) {
-            $records[] = new Record(
-                newReadTime: $row["ReadTime"],
-                newTemperature: $row["Temperature"],
-                newHumidity: $row["Humidity"],
-                newPpm: $row["Ppm"],
-                newIdDevice: $row["IDDevice"]
-            );
+        while ($row = mysqli_fetch_assoc($result)){
+            $records[] = [
+                "ReadTime" => $row["ReadTime"],
+                "Temperature" => $row["Temperature"],
+                "Humidity" => $row["Humidity"],
+                "Ppm" => $row["Ppm"],
+                "IDDevice" => $row["IDDevice"]
+            ];
         }
 
         return $records; // Devuelve el arreglo de objetos Record
@@ -166,7 +202,7 @@ class Device{
      *
      * @return array Lista de objetos `Record` asociados al dispositivo.
      */
-    public function getLastMonth() {
+    public function getLastMonth(){
         global $connection; // Accede a la conexión de la base de datos
         $records = array(); // Arreglo para almacenar los registros
 
@@ -175,14 +211,14 @@ class Device{
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
-        while ($row = mysqli_fetch_assoc($result)) {
-            $records[] = new Record(
-                newReadTime: $row["ReadTime"],
-                newTemperature: $row["Temperature"],
-                newHumidity: $row["Humidity"],
-                newPpm: $row["Ppm"],
-                newIdDevice: $row["IDDevice"]
-            );
+        while ($row = mysqli_fetch_assoc($result)){
+            $records[] = [
+                "ReadTime" => $row["ReadTime"],
+                "Temperature" => $row["Temperature"],
+                "Humidity" => $row["Humidity"],
+                "Ppm" => $row["Ppm"],
+                "IDDevice" => $row["IDDevice"]
+            ];
         }
 
         return $records; // Devuelve el arreglo de objetos Record
@@ -193,7 +229,7 @@ class Device{
      *
      * @return array Lista de objetos `Record` asociados al dispositivo.
      */
-    public function getLast3Months() {
+    public function getLast3Months(){
         global $connection; // Accede a la conexión de la base de datos
         $records = array(); // Arreglo para almacenar los registros
 
@@ -202,14 +238,14 @@ class Device{
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
-        while ($row = mysqli_fetch_assoc($result)) {
-            $records[] = new Record(
-                newReadTime: $row["ReadTime"],
-                newTemperature: $row["Temperature"],
-                newHumidity: $row["Humidity"],
-                newPpm: $row["Ppm"],
-                newIdDevice: $row["IDDevice"]
-            );
+        while ($row = mysqli_fetch_assoc($result)){
+            $records[] = [
+                "ReadTime" => $row["ReadTime"],
+                "Temperature" => $row["Temperature"],
+                "Humidity" => $row["Humidity"],
+                "Ppm" => $row["Ppm"],
+                "IDDevice" => $row["IDDevice"]
+            ];
         }
 
         return $records; // Devuelve el arreglo de objetos Record
