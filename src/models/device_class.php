@@ -49,6 +49,15 @@ class Device{
     }
 
     /**
+     * Obtiene la key del dispositivo.
+     *
+     * @return string Key del dispositivo
+     */
+    public function getKey(){
+        return $this->accessKey;
+    }
+
+    /**
      * Genera y establece una nueva clave de acceso para el dispositivo.
      * La clave se encripta utilizando la fecha y hora actual.
      */

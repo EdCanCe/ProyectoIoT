@@ -44,6 +44,3 @@ async function dataReload(idDevice, key){
 async function setup(idDevice, key){//Maneja los máximos y mínimos, así como el llenado de los arreglos de los distintos datos.
     dataReload(idDevice, key);
 }
-
-setup();
-
