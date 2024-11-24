@@ -23,7 +23,7 @@ body{
 }
 
 .btn{
-    padding: 4px 40px 4px 40px;
+    padding: 4px 40px;
     border-radius: 16px;
     text-decoration: none;
     border: none;
@@ -31,14 +31,14 @@ body{
 }
 
 .btn-2{
-    padding: 4px 30px 4px 30px;
+    padding: 4px 30px;
     border-radius: 16px;
     text-decoration: none;
     border: none;
     margin: 20px 10px 20px 0;
 }
 
-.button-logIn, .button-signUp, .button-logout, .button-devices, .button-profile{
+.button-logIn, .button-signUp, .button-logout, .button-devices{
     background-color: #53361D;
     color: white;
     font-family: "Afacad", sans-serif;
@@ -51,14 +51,103 @@ body{
     background-color: #845231;
     font-size: 18px;
     color: white;
-    padding: 6px 44px 6px 44px;
+    padding: 6px 44px;
 }
 
-.button-logout:hover, .button-devices:hover, .button-profile:hover{
+.button-logout:hover, .button-devices:hover{
     background-color: #845231;
     font-size: 18px;
     color: white;
-    padding: 5px 36px 5px 36px;
+    padding: 5px 36px;
+}
+
+.dropdown{
+    min-width: 15rem;
+    position: relative;
+    display: inline-block;
+    margin-top: 16px;
+}
+
+.select{
+    background-color: #53361D;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 16px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.select-clicked{
+    border: 2px #6a4125 solid;
+    box-shadow: 0 0 0.8rem #e6a377;
+}
+
+.select:hover{
+    background: #845231;
+}
+
+.caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #ffffff;
+    transition: 0.3s;
+}
+
+.caret-rotate{
+    transform: rotate(180deg);
+}
+
+.dropdown .menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu{
+    list-style: none;
+    padding: 0.3rem;
+    background-color: #53361D;
+    border: 1px #6a4125 solid;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    color: #ffffff;
+    position: absolute;
+    top: 2.3rem;
+    left: 0;
+    width: 95%;
+    transform: none;
+    transition: 0.2s;
+    opacity: 0;
+    z-index: 4;
+    
+}
+
+.menu a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.menu a:hover{
+    background-color: #6b432a;
+}
+
+/* Js style (add later) */
+.active{
+    background-color: #804f30;
+}
+
+.menu-open{
+    display: block;
+    opacity: 1;
 }
 
 .logo-container{

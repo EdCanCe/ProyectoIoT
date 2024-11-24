@@ -51,17 +51,35 @@ HTML;
 
     //Verifica si el usuario ya inició sesión para desplegar distintas opciones en el header
     if(isset($_SESSION["IDUser"])){ //SDespliega esto si el usuario SI inició sesión
+        $html .= <<<HTML
+            <div class="dropdown">
+                <div class="select">
+                    <span class="selected">Habitación</span>
+                    <div class="caret"></div>
+                </div>
+                <ul class="menu">
+                    <li><a href="{$adressSetter}principal" class="active">Cuarto de maquinas</a></li>
+                    <li><a href="{$adressSetter}principal">Almacén</a></li>
+                    <li><a href="{$adressSetter}principal">Cuarto de lijado</a></li>
+                    <li><a href="{$adressSetter}principal">Cuarto de barnizado</a></li>
+                    <li><a href="{$adressSetter}principal">Cuarto de secado</a></li>
+                </ul>
+            </div>
+    HTML;
         $html = $html . renderButton('redirect("' . $adressSetter . 'logout")', "Cerrar sesión", "btn-2 button-logout");
         $html = $html . renderButton('redirect("' . $adressSetter . 'devices")', "Mis dispositivos", "btn-2 button-devices");
+        
     }else{ //Despliega esto si el usuario NO inició sesión
         $html = $html . renderButton('redirect("' . $adressSetter . 'login")', "Iniciar Sesión", "btn button-logIn");
         $html = $html . renderButton('redirect("' . $adressSetter . 'signup")', "Crear cuenta", "btn button-signUp");
+        
     }
 
     //Cierra el header
     $html .= <<<HTML
                 </div>
         </header>
+        <script src="{$adressSetter}src/js/dropdown.js"></script>
 HTML;
 
     return $html;
