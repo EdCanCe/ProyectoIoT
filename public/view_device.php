@@ -71,7 +71,7 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                     <h2 class="humidity-title">Humedad actual en el ambiente:</h2>
                     <div class="humidity-indicator">
                         <div class="current-humidity">
-                            <h3 class="current">87%</h3>
+                            <h3 class="current"><span id="humidity-text-holder"></span> %</h3>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" height="40px" fill="#e8eaed">
                                 <path d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191.1 0l1.8 0c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 
                                 384 228.8 384 320c0 106-86 192-192 192zM96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112c8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 
@@ -79,12 +79,12 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                         </div>
                         <div class="humidity-level">
                             <h3 class="level-text">Nivel de humedad:</h3>
-                            <div class="level-container">
-                                <h4 class="level">Correcto</h4>
+                            <div class="level-container" id="humidity-status-container">
+                                <h4 class="level" id="humidity-status-text-holder">Correcto</h4>
                             </div>
                         </div>
                     </div>
-                    <h4 class="text-indicator-humidity">El nivel de humedad en el ambiente esta en optimas condiciones</h4>
+                    <h4 class="text-indicator-humidity" id="humidity-status-description-holder">El nivel de humedad en el ambiente esta en optimas condiciones</h4>
                     <h2 class="text-resume">Resumen diario:</h2>
                     <div class="resume">
                         <ul class="row-titles-humidity">
@@ -93,9 +93,9 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                             <li>MIN</li>
                         </ul>
                         <ul class="row-values-humidity">
-                            <li>99 %</li>
-                            <li>99 %</li>
-                            <li>87 %</li>
+                            <li><span id="humidity-text-holder-prom">90</span> %</li>
+                            <li><span id="humidity-text-holder-max">90</span> %</li>
+                            <li><span id="humidity-text-holder-min">90</span> %</li>
                         </ul>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                     <h2 class="temperature-title">Temperatura actual en el ambiente:</h2>
                     <div class="temperature-indicator">
                         <div class="current-temperature">
-                            <h3 class="current">26 °C</h3>
+                            <h3 class="current"><span id="temperature-text-holder"></span> °C</h3>
                             <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" fill="#e8eaed">
                                 <path d="M480-80q-83 0-141.5-58.5T280-280q0-50 22.33-93.83 22.34-43.84 65-68.17v-325.33q0-46.95 
                                 32.86-79.81Q433.06-880 480-880q46.94 0 79.81 32.86 32.86 32.86 32.86 79.81V-442q42.66 24.33 65 68.17Q680-330 680-280q0 
@@ -112,12 +112,12 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                         </div>
                         <div class="temperature-level">
                             <h3 class="level-text">Nivel de temperatura:</h3>
-                            <div class="level-container">
-                                <h4 class="level">Correcto</h4>
+                            <div class="level-container" id="temperature-status-container">
+                                <h4 class="level" id="temperature-status-text-holder">Correcto</h4>
                             </div>
                         </div>
                     </div>
-                    <h4 class="text-indicator-temperature">El nivel de temperatura en el ambiente esta en optimas condiciones</h4>
+                    <h4 class="text-indicator-temperature" id="humidity-status-description-holder">El nivel de temperatura en el ambiente esta en optimas condiciones</h4>
                     <h2 class="text-resume">Resumen diario:</h2>
                     <div class="resume">
                         <ul class="row-titles-temperature">
@@ -126,9 +126,9 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                             <li>MIN</li>
                         </ul>
                         <ul class="row-values-temperature">
-                            <li>28°C</li>
-                            <li>30°C</li>
-                            <li>21°C</li>
+                            <li><span id="temperature-text-holder-prom">90</span> °C</li>
+                            <li><span id="temperature-text-holder-max">90</span> °C</li>
+                            <li><span id="temperature-text-holder-min">90</span> °C</li>
                         </ul>
                     </div>
                 </div>

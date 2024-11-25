@@ -166,7 +166,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
     
         // Consulta para obtener los registros con ReadTime en las últimas 24 horas
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 DAY";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 DAY  ORDER BY ReadTime DESC";
         $result = mysqli_query($connection, $query);
     
         // Itera sobre los resultados y crea objetos Record para cada uno
@@ -193,7 +193,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
 
         // Consulta para obtener los registros con ReadTime en los últimos 10 días
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 10 DAY";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 10 DAY ORDER BY ReadTime DESC";
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
@@ -220,7 +220,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
 
         // Consulta para obtener los registros con ReadTime en el último mes
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 MONTH";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 MONTH ORDER BY ReadTime DESC";
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno
@@ -247,7 +247,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
 
         // Consulta para obtener los registros con ReadTime en los últimos 3 meses
-        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 3 MONTH";
+        $query = "SELECT ReadTime, Temperature, Humidity, Ppm, IDDevice FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 3 MONTH ORDER BY ReadTime DESC";
         $result = mysqli_query($connection, $query);
 
         // Itera sobre los resultados y crea objetos Record para cada uno

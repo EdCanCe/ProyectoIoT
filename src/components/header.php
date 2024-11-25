@@ -1,6 +1,8 @@
-<?php require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos. La dirección se pone como si fuera del elemento que la llama, es decir, un elemento en /public
+<?php $comingFrom="header";
+require_once "../src/config/db_connection.php"; //Enlace al documento que se conecta a la base de datos. La dirección se pone como si fuera del elemento que la llama, es decir, un elemento en /public
 require_once "../src/components/button.php"; //Carga el creador de elementos
 require_once "../src/utils/offset_adress.php"; //Carga la función que quita los offset en las direcciones
+require_once "../src/models/user_class.php"; //Carga la clase del usuario
 
 session_start(); //Inicia la sesión
 
@@ -58,14 +60,20 @@ HTML;
                     <div class="caret"></div>
                 </div>
                 <ul class="menu">
-                    <li><a href="{$adressSetter}principal" class="active">Cuarto de maquinas</a></li>
-                    <li><a href="{$adressSetter}principal">Almacén</a></li>
-                    <li><a href="{$adressSetter}principal">Cuarto de lijado</a></li>
-                    <li><a href="{$adressSetter}principal">Cuarto de barnizado</a></li>
-                    <li><a href="{$adressSetter}principal">Cuarto de secado</a></li>
+HTML;
+        $user = new UserDevice($_SESSION["IDUser"]);
+        $devices = $user->getDevices();
+        if(sizeof($devices)==0){
+            $html = $html . "<li>No hay dispositivos vinculados a este usuario</li>";
+        }else{
+            for( $i= 0; $i<count($devices); $i++){
+                $html = $html . "<li><a href='{$adressSetter}device/{$devices[$i]->getIdDevice()}'>{$devices[$i]->getPlace()}</a></li>";
+            }
+        }
+        $html .= <<<HTML
                 </ul>
             </div>
-    HTML;
+HTML;
         $html = $html . renderButton('redirect("' . $adressSetter . 'logout")', "Cerrar sesión", "btn-2 button-logout");
         $html = $html . renderButton('redirect("' . $adressSetter . 'devices")', "Mis dispositivos", "btn-2 button-devices");
         
