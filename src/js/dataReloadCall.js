@@ -60,7 +60,6 @@ async function dataReload(idDevice, key){
      * 5 = Maximos, minimos y promedios
      */
 
-    reps++;
     if(reps==120){
         reps=0;
         let result = await query(idDevice, key, 5);
@@ -74,6 +73,7 @@ async function dataReload(idDevice, key){
         temperatureMaxText = result.temperatureMax;
         temperatureMinText = result.temperatureMin;
     }
+    reps++;
 
     let result = await query(idDevice, key, 0);
     ppmCurrentText.textContent = result.Ppm;
