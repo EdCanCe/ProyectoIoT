@@ -31,6 +31,8 @@ if(isset($_GET["id"])){ //El ID del dispositivo
                 echo json_encode($device->getLastMonth());
             }else if($type==4){
                 echo json_encode($device->getLast3Months());
+            }else if($type==5){
+                echo json_encode($device->getLastDayCalc());
             }
         }
     }

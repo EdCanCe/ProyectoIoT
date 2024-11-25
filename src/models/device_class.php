@@ -263,4 +263,36 @@ class Device{
 
         return $records; // Devuelve el arreglo de objetos Record
     }
+
+    /**
+     * Obtiene los registros vinculados a un dispositivo en el último día.
+     *
+     * @return array Lista de objetos `Records` asociados al dispositivo
+     */
+    public function getLastDayCalc(){
+        global $connection; // Accede a la conexión de la base de datos
+        $records = array(); // Arreglo para almacenar los registros
+    
+        // Consulta para obtener los registros con ReadTime en las últimas 24 horas
+        $query = "SELECT AVG(Ppm) as ppmAvg, MAX(Ppm) as ppmMax, MIN(Ppm) as ppmMin, AVG(Humidity) as humidityAvg, MAX(Humidity) as humidityMax, MIN(Humidity) as humidityMin, AVG(Temperature) as temperatureAvg, MAX(Temperature) as temperatureMax, MIN(Temperature) as temperatureMin FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 DAY ORDER BY ReadTime DESC";
+        $result = mysqli_query($connection, $query);
+    
+        // Itera sobre los resultados y crea objetos Record para cada uno
+        while ($row = mysqli_fetch_assoc($result)){
+            $records[] = [
+                "ppmAvg" => $row["ppmAvg"],
+                "ppmMax" => $row["ppmMax"],
+                "ppmMin" => $row["ppmMin"],
+                "humidityAvg" => $row["humidityAvg"],
+                "humidityMax" => $row["humidityMax"],
+                "humidityMin" => $row["humidityMin"],
+                "temperatureAvg" => $row["temperatureAvg"],
+                "temperatureMax" => $row["temperatureMax"],
+                "temperatureMin" => $row["temperatureMin"]
+            ];
+        }
+    
+        return $records; // Devuelve el arreglo de objetos Record
+    }
+
 }

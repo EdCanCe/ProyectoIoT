@@ -7,6 +7,8 @@ function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+let reps=120;
+
 let ppmCurrentText;
 let ppmAvgText;
 let ppmMaxText;
@@ -55,14 +57,30 @@ async function dataReload(idDevice, key){
      * 2 = 10 últimos días
      * 3 = Último mes
      * 4 = 3 Últimos meses
+     * 5 = Maximos, minimos y promedios
      */
+
+    reps++;
+    if(reps==120){
+        reps=0;
+        let result = await query(idDevice, key, 5);
+        ppmAvgText = result.ppmAvg;
+        ppmMaxText = result.ppmMax;
+        ppmMinText = result.ppmMin;
+        humidityAvgText = result.humidityAvg;
+        humidityMaxText = result.humidityMax;
+        humidityMinText = result.humidityMin;
+        temperatureAvgText = result.temperatureAvg;
+        temperatureMaxText = result.temperatureMax;
+        temperatureMinText = result.temperatureMin;
+    }
 
     let result = await query(idDevice, key, 0);
     ppmCurrentText.textContent = result.Ppm;
     humidityCurrentText.textContent = result.Humidity;
     temperatureCurrentText.textContent = result.Temperature;
 
-    await sleep(2000); // 2 segundos
+    await sleep(5000); // 2 segundos
     dataReload(idDevice, key);
 }
 
