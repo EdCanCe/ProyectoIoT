@@ -61,9 +61,9 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                             <li>MIN</li>
                         </ul>
                         <ul class="row-values-ppm">
-                            <li><span id="ppm-text-holder-prom">90</span> %</li>
-                            <li><span id="ppm-text-holder-max">90</span> %</li>
-                            <li><span id="ppm-text-holder-min">90</span> %</li>
+                            <li><span id="ppm-text-holder-prom">90</span> μg/m³</li>
+                            <li><span id="ppm-text-holder-max">90</span> μg/m³</li>
+                            <li><span id="ppm-text-holder-min">90</span> μg/m³</li>
                         </ul>
                     </div>
                 </div>

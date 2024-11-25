@@ -87,29 +87,27 @@ async function dataReload(idDevice, key){
 async function setup(idDevice, key){//Maneja los máximos y mínimos, así como el llenado de los arreglos de los distintos datos.
     ppmCurrentText = document.getElementById("ppm-text-holder");
     ppmAvgText = document.getElementById("ppm-text-holder-prom");
-    ppmMaxText = document.getElementById("ppm-text-holder-prom");
-    ppmMinText = document.getElementById("ppm-text-holder-prom");
+    ppmMaxText = document.getElementById("ppm-text-holder-max");
+    ppmMinText = document.getElementById("ppm-text-holder-min");
     ppmStatusContainer = document.getElementById("ppm-status-container");
     ppmStatusText = document.getElementById("ppm-status-text-holder");
     ppmStatusDesc = document.getElementById("ppm-status-text-description");
 
     temperatureCurrentText = document.getElementById("temperature-text-holder");
     temperatureAvgText = document.getElementById("temperature-text-holder-prom");
-    temperatureMaxText = document.getElementById("temperature-text-holder-prom");
-    temperatureMinText = document.getElementById("temperature-text-holder-prom");
+    temperatureMaxText = document.getElementById("temperature-text-holder-max");
+    temperatureMinText = document.getElementById("temperature-text-holder-min");
     temperatureStatusContainer = document.getElementById("temperature-status-container");
     temperatureStatusText = document.getElementById("temperature-status-text-holder");
     temperatureStatusDesc = document.getElementById("temperature-status-text-description");
 
     humidityCurrentText = document.getElementById("humidity-text-holder");
     humidityAvgText = document.getElementById("humidity-text-holder-prom");
-    humidityMaxText = document.getElementById("humidity-text-holder-prom");
-    humidityMinText = document.getElementById("humidity-text-holder-prom");
+    humidityMaxText = document.getElementById("humidity-text-holder-max");
+    humidityMinText = document.getElementById("humidity-text-holder-min");
     humidityStatusContainer = document.getElementById("humidity-status-container");
     humidityStatusText = document.getElementById("humidity-status-text-holder");
     humidityStatusDesc = document.getElementById("humidity-status-text-description");
-
-    let result = await query(idDevice, key, 1);
 
     dataReload(idDevice, key);
 }
