@@ -411,7 +411,7 @@ section.statistics{
     align-items: center;
 }
 
-.menu{
+.menu-statistics{
     display: flex;
     flex-direction: row;
     align-items: baseline;

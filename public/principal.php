@@ -121,7 +121,7 @@ echo renderHeader($info["proyect"]["name"], 0, array("dataReloadCall", "redirect
 </section>
 
 <section class="statistics">
-    <div class="menu">
+    <div class="menu-statistics">
         <h2 class="view-register">Visualizar registro</h2>
         <div class="options-records">
             <button class="btn-option">Últimos 10 días</button>
