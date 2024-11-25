@@ -63,15 +63,15 @@ async function dataReload(idDevice, key){
     if(reps==120){
         reps=0;
         let result = await query(idDevice, key, 5);
-        ppmAvgText = result.ppmAvg;
-        ppmMaxText = result.ppmMax;
-        ppmMinText = result.ppmMin;
-        humidityAvgText = result.humidityAvg;
-        humidityMaxText = result.humidityMax;
-        humidityMinText = result.humidityMin;
-        temperatureAvgText = result.temperatureAvg;
-        temperatureMaxText = result.temperatureMax;
-        temperatureMinText = result.temperatureMin;
+        ppmAvgText.textContent = result.ppmAvg;
+        ppmMaxText.textContent = result.ppmMax;
+        ppmMinText.textContent = result.ppmMin;
+        humidityAvgText.textContent = result.humidityAvg;
+        humidityMaxText.textContent = result.humidityMax;
+        humidityMinText.textContent = result.humidityMin;
+        temperatureAvgText.textContent = result.temperatureAvg;
+        temperatureMaxText.textContent = result.temperatureMax;
+        temperatureMinText.textContent = result.temperatureMin;
     }
     reps++;
 

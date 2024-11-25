@@ -279,7 +279,7 @@ class Device{
     
         // Itera sobre los resultados y crea objetos Record para cada uno
         while ($row = mysqli_fetch_assoc($result)){
-            $records[] = [
+            $records = [
                 "ppmAvg" => $row["ppmAvg"],
                 "ppmMax" => $row["ppmMax"],
                 "ppmMin" => $row["ppmMin"],
