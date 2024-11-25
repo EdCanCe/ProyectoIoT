@@ -110,20 +110,24 @@ body{
 .menu{
     list-style: none;
     padding: 0.3rem;
-    background-color: #53361D;
+    /*background-color: #53361D;
     border: 1px #6a4125 solid;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
+    border-radius: 0.5rem;*/
     color: #ffffff;
     position: absolute;
     top: 2.3rem;
     left: 0;
-    width: 95%;
+    max-width: 95%;
+    width: 1000px;
     transform: none;
     transition: 0.2s;
-    opacity: 0;
     z-index: 4;
     
+}
+
+.menu h2{
+    text-align: center;
 }
 
 .menu a {
@@ -428,6 +432,8 @@ section.statistics{
 .options-recod{
     display: flex;
     flex-direction: row;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .btn-option{

@@ -274,7 +274,7 @@ class Device{
         $records = array(); // Arreglo para almacenar los registros
     
         // Consulta para obtener los registros con ReadTime en las últimas 24 horas
-        $query = "SELECT AVG(Ppm) as ppmAvg, MAX(Ppm) as ppmMax, MIN(Ppm) as ppmMin, AVG(Humidity) as humidityAvg, MAX(Humidity) as humidityMax, MIN(Humidity) as humidityMin, AVG(Temperature) as temperatureAvg, MAX(Temperature) as temperatureMax, MIN(Temperature) as temperatureMin FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 DAY ORDER BY ReadTime DESC";
+        $query = "SELECT ROUND(AVG(Ppm),2) as ppmAvg, MAX(Ppm) as ppmMax, MIN(Ppm) as ppmMin, ROUND(AVG(Humidity),2) as humidityAvg, MAX(Humidity) as humidityMax, MIN(Humidity) as humidityMin, ROUND(AVG(Temperature),2) as temperatureAvg, MAX(Temperature) as temperatureMax, MIN(Temperature) as temperatureMin FROM Record WHERE IDDevice = $this->idDevice AND ReadTime >= NOW() - INTERVAL 1 DAY ORDER BY ReadTime DESC";
         $result = mysqli_query($connection, $query);
     
         // Itera sobre los resultados y crea objetos Record para cada uno
