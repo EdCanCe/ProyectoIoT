@@ -14,7 +14,7 @@
 #include <HardwareSerial.h>
 
 // ESP32 pin GPIO21 connected to DHT11 sensor
-#define DHT11_PIN  13
+#define DHT11_PIN 13
 
 // Crear una instancia para UART1
 HardwareSerial PM2_5_Serial(1);
@@ -25,21 +25,21 @@ float temp_hum_values[2];
 int dust_value;
 // String baseURL = "https://edcance.dev/IoT/testInsert/";
 String DeviceID = "1";
-Sring DeviceKey = "qyyF$SyjGym$rKM7eMsZ";
-String baseURL = "https://edcance.dev/IoT/addRecord/"+DeviceID+"/"+DeviceKey+"/";
+String DeviceKey = "qyyF$SyjGym$rKM7eMsZ";
+String baseURL = "https://edcance.dev/IoT/addRecord/" + DeviceID + "/" + DeviceKey + "/";
 String url = "";
 
 // Clave para WiFi
-const char * ssid = "Tec-IoT";
-const char * password = "spotless.magnetic.bridge";
+const char* ssid = "";
+const char* password = "";
 
 void setup() {
   Serial.begin(9600);
-  Serial.print("Conectando a WiFi...");
+  Serial.println("Conectando a WiFi...");
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
-    Serial.print(".");
+    Serial.println(".");
   }
   Serial.println("\nConectado a WiFi!");
   PM2_5_Serial.begin(9600, SERIAL_8N1, 16, 17);  // UART1: RX=16, TX=17 (ajusta según tus pines)
@@ -48,18 +48,18 @@ void setup() {
   Serial.println("Iniciando lectura del senor DHT11");
 }
 
-void temperature_humidity_sensor(){
+void temperature_humidity_sensor() {
   // read humidity
-  float humi  = dht11.readHumidity();
+  float humi = dht11.readHumidity();
   // read temperature in Celsius
   float tempC = dht11.readTemperature();
   if (isnan(tempC) || isnan(humi)) {
     Serial.println("Failed to read from DHT11 sensor!");
-    temp_hum_values[0] = -1;
-    temp_hum_values[1] = -1;
+    temp_hum_values[0] = 555;
+    temp_hum_values[1] = 555;
   } else {
-    Serial.print(tempC);
-    Serial.print(humi);
+    Serial.println(tempC);
+    Serial.println(humi);
     temp_hum_values[0] = tempC;
     temp_hum_values[1] = humi;
   }
@@ -88,15 +88,15 @@ void dust_sensor() {
     if (i == 4 && data[0] == 0xA5) {  // Revisar que el primer byte sea el característico 0xA5
       byte DATAH = data[1];
       byte DATAL = data[2];
-      
+
       // Calcular el valor de concentración de PM2.5
       unsigned int concentration = (DATAH * 128) + (DATAL & 0x7F);
-      
+
       dust_value = (int)concentration;
     }
   } else {
     Serial.println("Bad connection to dust sensor.");
-    dust_value = -1;
+    dust_value = 555;
   }
 }
 
@@ -113,20 +113,22 @@ void loop() {
   // url = baseURL + "30/" + "60/" + "90"
 
   if (WiFi.status() == WL_CONNECTED) {
-      HTTPClient http;
-      http.begin(url); // Cambia esto a tu URL
-      int httpResponseCode = http.GET(); // Hacer la solicitud GET
-      if (httpResponseCode > 0) {
-          String payload = http.getString(); // Obtener el payload de la respuesta
-          //Serial.println(httpResponseCode); // Imprimir el código de respuesta HTTP
-          //Serial.println(payload); // Imprimir el payload
-      } else {
-          Serial.print("Error en la solicitud HTTP: ");
-          Serial.println(httpResponseCode);
-      }
-      http.end(); // Liberar recursos
+    HTTPClient http;
+    Serial.println(url);
+    http.begin(url);                    // Cambia esto a tu URL
+    int httpResponseCode = http.GET();  // Hacer la solicitud GET
+    if (httpResponseCode > 0) {
+      String payload = http.getString();  // Obtener el payload de la respuesta
+      //Serial.println(httpResponseCode); // Imprimir el código de respuesta HTTP
+      //Serial.println(payload); // Imprimir el payload
+      Serial.println("Sent successfully!");
+    } else {
+      Serial.println("Error en la solicitud HTTP: ");
+      Serial.println(httpResponseCode);
+    }
+    http.end();  // Liberar recursos
   }
 
-  // wait a 2 seconds between readings
-  delay(2000); 
+  // wait a 5 second delay between readings
+  delay(5000);
 }
