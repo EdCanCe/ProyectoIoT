@@ -63,6 +63,55 @@ async function query(idDevice, key, type){
     }
 }
 
+function graphTheData(){
+
+    //Creación de las columnas
+    var ppmData = new google.visualization.DataTable();
+    ppmData.addColumn('string', 'Time');
+    ppmData.addColumn('number', 'PPM');
+
+    var temperatureData = new google.visualization.DataTable();
+    temperatureData.addColumn('string', 'Time');
+    temperatureData.addColumn('number', 'Temperature');
+
+    var humidityData = new google.visualization.DataTable();
+    humidityData.addColumn('string', 'Time');
+    humidityData.addColumn('number', 'Humidity');
+
+
+    //Creación de los registros.
+    let ppmRows = graphData.map(item => [item.ReadTime, parseInt(item.Ppm)]);
+    ppmData.addRows(ppmRows);
+
+    let temperatureRows = graphData.map(item => [item.ReadTime, parseInt(item.Temperature)]);
+    temperatureData.addRows(temperatureRows);
+
+    let humidityRows = graphData.map(item => [item.ReadTime, parseInt(item.Humidity)]);
+    humidityData.addRows(humidityRows);
+
+
+    //Opciones del gráfico
+    var options = {
+        title: 'TITULO',
+        width: screen.width*0.25,
+        height: screen.width*0.15,
+        curveType: 'function',
+        legend: { position: 'bottom' }
+    };
+
+
+    //Dibujar el gráfico
+    var ppmChart = new google.visualization.LineChart(ppmGraphContainer);
+    ppmChart.draw(ppmData, options);
+
+    var temperatureChart = new google.visualization.LineChart(temperatureGraphContainer);
+    temperatureChart.draw(temperatureData, options);
+
+    var humidityChart = new google.visualization.LineChart(humidityGraphContainer);
+    humidityChart.draw(humidityData, options);
+
+}
+
 async function dataReload(idDevice, key){
     /**
      * 0 = Última línea
@@ -96,34 +145,7 @@ async function dataReload(idDevice, key){
     graphData.unshift(result);
     graphData.pop();
 
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Time');
-    data.addColumn('number', 'Temperature');
-    data.addColumn('number', 'Humidity');
-    data.addColumn('number', 'PPM');
-
-
-    let rows = graphData.map(item => [item.ReadTime, parseFloat(item.Temperature), parseFloat(item.Humidity), parseInt(item.Ppm)]);
-    data.addRows(rows);
-
-    //Opciones del gráfico
-    var options = {
-        title: 'Rate the Day on a Scale of 1 to 10',
-        width: 900,
-        height: 500,
-        hAxis: {
-            format: 'M/d/yy',
-            gridlines: {count: 15}
-        },
-        vAxis: {
-            gridlines: {color: 'none'},
-            minValue: 0
-        }
-    };
-
-    //Dibujar el gráfico
-    var chart = new google.visualization.LineChart(mainGraphContainer);
-    chart.draw(data, options);
+    graphTheData();
 
     reps++;
     await sleep(5000); // 5 segundos
@@ -163,7 +185,7 @@ async function setup(idDevice, key){//Maneja los máximos y mínimos, así como 
     temperatureGraphContainer = document.getElementById("temperature-graph-container");
     humidityGraphContainer = document.getElementById("humidity-graph-container");
 
-    graphData = await query(idDevice, key, 4);
+    graphData = await query(idDevice, key, 1);
 
     dataReload(idDevice, key);
 }

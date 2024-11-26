@@ -468,4 +468,15 @@ section.statistics{
 .graph-holders{
     max-width: 95%;
     width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.tiny-graph{
+    width: 25vw;
+    height: 15vw;
+    display: inline-block;
+    border-radius: 20px;
+    border: 3px double #787877;
 }
