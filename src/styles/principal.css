@@ -470,8 +470,9 @@ section.show-data{
 
 .tiny-graph {
     background-color: #2a2a2a;
-    padding: 20px;
+    height: 13vw;
+    width: 20vw;
+    gap: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    min-height: 150px;
 }
