@@ -192,5 +192,5 @@ async function setup(idDevice, key){//Maneja los máximos y mínimos, así como 
 
 async function reloadTheGraph(idDevice, key, type){
     graphData = await query(idDevice, key, type);
-    graphData();
+    graphTheData();
 }
