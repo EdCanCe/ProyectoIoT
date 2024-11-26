@@ -9,7 +9,7 @@ if(isset($_GET["id"])){ //El ID del dispositivo
     $key=$_GET["key"];
     
     $device=new Device($id, $key);
-    if($device->itExists()){ //SI existe ese dispositivo con esa llave
+    if($device->itExists()){//SI existe ese dispositivo con esa llave
         if(isset($_GET["temperature"])){ //Se va a añadir a la base de datos
             $temperature = $_GET["temperature"];
             $humidity = $_GET["humidity"];

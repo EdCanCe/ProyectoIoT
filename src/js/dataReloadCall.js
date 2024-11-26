@@ -93,38 +93,36 @@ async function dataReload(idDevice, key){
     }
 
     //Añade el último registro y elimina el último
-    graphData.unshift(latestData);
+    graphData.unshift(result);
     graphData.pop();
 
-    //Crear el DataTable para Google Charts
-    const data = new google.visualization.DataTable();
+    var data = new google.visualization.DataTable();
     data.addColumn('string', 'Time');
-    data.addColumn('number', 'PPM');
     data.addColumn('number', 'Temperature');
     data.addColumn('number', 'Humidity');
+    data.addColumn('number', 'PPM');
 
-    //Convertir los objetos JSON en filas para Google Charts
-    const rows = graphData.map(item => [
-        item.time,
-        item.ppm,
-        item.temperature,
-        item.humidity
-    ]);
+
+    let rows = graphData.map(item => [item.ReadTime, parseFloat(item.Temperature), parseFloat(item.Humidity), parseInt(item.Ppm)]);
     data.addRows(rows);
 
     //Opciones del gráfico
-    const options = {
-        title: 'Datos en tiempo real',
-        curveType: 'function',
-        legend: { position: 'bottom' },
-        width: 800,
-        height: 400,
-        hAxis: { title: 'Tiempo' },
-        vAxis: { title: 'Valores' }
+    var options = {
+        title: 'Rate the Day on a Scale of 1 to 10',
+        width: 900,
+        height: 500,
+        hAxis: {
+            format: 'M/d/yy',
+            gridlines: {count: 15}
+        },
+        vAxis: {
+            gridlines: {color: 'none'},
+            minValue: 0
+        }
     };
 
     //Dibujar el gráfico
-    const chart = new google.visualization.LineChart(mainGraphContainer);
+    var chart = new google.visualization.LineChart(mainGraphContainer);
     chart.draw(data, options);
 
     reps++;
@@ -165,7 +163,7 @@ async function setup(idDevice, key){//Maneja los máximos y mínimos, así como 
     temperatureGraphContainer = document.getElementById("temperature-graph-container");
     humidityGraphContainer = document.getElementById("humidity-graph-container");
 
-    graphData = await query(idDevice, key, 1);
+    graphData = await query(idDevice, key, 4);
 
     dataReload(idDevice, key);
 }
