@@ -137,7 +137,7 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
     </section>
 
     <section class="statistics">
-        <div class="menu">
+        <div class="menu-statistics">
             <h2 class="view-register">Visualizar registro</h2>
             <div class="options-records">
                 <button class="btn-option" onclick="reloadTheGraph(<?php echo $device->getIdDevice()?>, '<?php echo $device->getKey()?>', 2)">Últimos 10 días</button>
@@ -146,12 +146,11 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
             </div>  
         </div>
         <div class="main-graph" id="main-graph-container">
-
-        </div>
-        <div class="graph-holders">
-            <div class="tiny-graph" id="ppm-graph-container"></div>
-            <div class="tiny-graph" id="humidity-graph-container"></div>
-            <div class="tiny-graph" id="temperature-graph-container"></div>
+            <div class="graph-holders">
+                <div class="tiny-graph" id="ppm-graph-container"></div>
+                <div class="tiny-graph" id="humidity-graph-container"></div>
+                <div class="tiny-graph" id="temperature-graph-container"></div>
+            </div>
         </div>
     </section>
 
