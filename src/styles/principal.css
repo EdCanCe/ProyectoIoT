@@ -461,16 +461,17 @@ section.show-data{
 }
 
 .graph-holders {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    justify-content: space-evenly;
     width: 100%;
 }
 
 .tiny-graph {
-    background-color: #2a2a2a;
-    height: 13vw;
+    background-color: #ffffff;
+    height: 12vw;
     width: 20vw;
     gap: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
