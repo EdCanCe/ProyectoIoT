@@ -140,9 +140,9 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
         <div class="menu">
             <h2 class="view-register">Visualizar registro</h2>
             <div class="options-records">
-                <button class="btn-option">Últimos 10 días</button>
-                <button class="btn-option">Último mes</button>
-                <button class="btn-option">Últimos 3 meses</button>
+                <button class="btn-option" onclick="reloadTheGraph(<?php echo $device->getIdDevice()?>, '<?php echo $device->getKey()?>', 2)">Últimos 10 días</button>
+                <button class="btn-option" onclick="reloadTheGraph(<?php echo $device->getIdDevice()?>, '<?php echo $device->getKey()?>', 3)">Último mes</button>
+                <button class="btn-option" onclick="reloadTheGraph(<?php echo $device->getIdDevice()?>, '<?php echo $device->getKey()?>', 4)">Últimos 3 meses</button>
             </div>  
         </div>
         <div class="main-graph" id="main-graph-container">
