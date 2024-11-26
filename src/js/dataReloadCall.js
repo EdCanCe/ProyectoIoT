@@ -141,13 +141,11 @@ async function dataReload(idDevice, key){
     humidityCurrentText.textContent = result.Humidity;
     temperatureCurrentText.textContent = result.Temperature;
 
-    
-    
-    if(result.Temperature<25){
+    if(result.Temperature<21){
         temperatureStatusContainer.style = "background-color: red";
         temperatureStatusText.textContent = "ALERTA";
         temperatureStatusDesc.textContent = "El valor está por debajo de lo recomendado";
-    }else if(result.Humidity>=25 && result.Humidity<=30){
+    }else if(result.Temperature>=21 && result.Temperature<=30){
         temperatureStatusContainer.style = "background-color: #5C5C5C";
         temperatureStatusText.textContent = "Correcto";
         temperatureStatusDesc.textContent = "El nivel de temperatura en el ambiente esta en optimas condiciones";
