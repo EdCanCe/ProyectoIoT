@@ -84,7 +84,7 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                             </div>
                         </div>
                     </div>
-                    <h4 class="text-indicator-humidity" id="humidity-status-description-holder">El nivel de humedad en el ambiente esta en optimas condiciones</h4>
+                    <h4 class="text-indicator-humidity" id="humidity-status-text-description">El nivel de humedad en el ambiente esta en optimas condiciones</h4>
                     <h2 class="text-resume">Resumen diario:</h2>
                     <div class="resume">
                         <ul class="row-titles-humidity">
