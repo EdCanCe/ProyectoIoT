@@ -116,13 +116,13 @@ function graphTheData(){
 
     //Dibujar el gráfico
     var ppmChart = new google.visualization.LineChart(ppmGraphContainer);
-    ppmChart.draw(ppmData, options);
+    ppmChart.draw(ppmData, ppmOptions);
 
     var temperatureChart = new google.visualization.LineChart(temperatureGraphContainer);
-    temperatureChart.draw(temperatureData, options);
+    temperatureChart.draw(temperatureData, temperatureOptions);
 
     var humidityChart = new google.visualization.LineChart(humidityGraphContainer);
-    humidityChart.draw(humidityData, options);
+    humidityChart.draw(humidityData, humidityOptions);
 
 }
 
