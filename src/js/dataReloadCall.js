@@ -93,22 +93,22 @@ function graphTheData(){
     //Opciones del gráfico
     var ppmOptions = {
         title: 'PPM μg/m³',
-        width: screen.width*0.20,
-        height: screen.width*0.12,
+        width: window.innerWidth*0.20,
+        height: window.innerWidth*0.12,
         curveType: 'function',
         legend: { position: 'bottom' }
     };
     var temperatureOptions = {
         title: 'Temperatura °C',
-        width: screen.width*0.20,
-        height: screen.width*0.12,
+        width: window.innerWidth*0.20,
+        height: window.innerWidth*0.12,
         curveType: 'function',
         legend: { position: 'bottom' }
     };
     var humidityOptions = {
         title: 'Humedad %',
-        width: screen.width*0.20,
-        height: screen.width*0.12,
+        width: window.innerWidth*0.20,
+        height: window.innerWidth*0.12,
         curveType: 'function',
         legend: { position: 'bottom' }
     };
