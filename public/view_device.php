@@ -145,8 +145,17 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                 <button class="btn-option">Últimos 3 meses</button>
             </div>  
         </div>
+        <div class="main-graph" id="main-graph-container">
+
+        </div>
+        <div class="graph-holders">
+            <div class="tiny-graph" id="ppm-graph-container"></div>
+            <div class="tiny-graph" id="humidity-graph-container"></div>
+            <div class="tiny-graph" id="temperature-graph-container"></div>
+        </div>
     </section>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>setup(<?php echo $device->getIdDevice() ?>, "<?php echo $device->getKey() ?>")</script>
 
 <?php }else{

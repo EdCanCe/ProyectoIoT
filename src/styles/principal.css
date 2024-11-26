@@ -457,3 +457,15 @@ section.statistics{
     border: 1px solid #bdbdbd;
     padding: 8px 40px 8px 40px;
 }
+
+/* Graphs */
+
+.main-graph{
+    max-width: 95%;
+    width: 1000px;
+}
+
+.graph-holders{
+    max-width: 95%;
+    width: 1000px;
+}

@@ -33,6 +33,19 @@ let humidityStatusContainer;
 let humidityStatusText;
 let humidityStatusDesc;
 
+let mainGraphContainer;
+let ppmGraphContainer;
+let temperatureGraphContainer;
+let humidityGraphContainer;
+
+let mainGraph;
+let ppmGraph;
+let temperatureGraph;
+let humidityGraph;
+
+let graphData;
+let typeOfRender = 1;
+
 async function query(idDevice, key, type){
     try{
         const response = await fetch("../src/controllers/record_controller.php?id="+String(idDevice)+"&key="+key+"&type="+String(type));
@@ -60,8 +73,13 @@ async function dataReload(idDevice, key){
      * 5 = Maximos, minimos y promedios
      */
 
-    if(reps==120){
-        reps=0;
+    let result = await query(idDevice, key, 0);
+    ppmCurrentText.textContent = result.Ppm;
+    humidityCurrentText.textContent = result.Humidity;
+    temperatureCurrentText.textContent = result.Temperature;
+
+    if(reps==120){ //Datos de máximos, minimos y promedios, cargándose cada 10 minutos
+        reps=1;
         let result = await query(idDevice, key, 5);
         ppmAvgText.textContent = result.ppmAvg;
         ppmMaxText.textContent = result.ppmMax;
@@ -73,18 +91,51 @@ async function dataReload(idDevice, key){
         temperatureMaxText.textContent = result.temperatureMax;
         temperatureMinText.textContent = result.temperatureMin;
     }
+
+    //Añade el último registro y elimina el último
+    graphData.unshift(latestData);
+    graphData.pop();
+
+    //Crear el DataTable para Google Charts
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Time');
+    data.addColumn('number', 'PPM');
+    data.addColumn('number', 'Temperature');
+    data.addColumn('number', 'Humidity');
+
+    //Convertir los objetos JSON en filas para Google Charts
+    const rows = graphData.map(item => [
+        item.time,
+        item.ppm,
+        item.temperature,
+        item.humidity
+    ]);
+    data.addRows(rows);
+
+    //Opciones del gráfico
+    const options = {
+        title: 'Datos en tiempo real',
+        curveType: 'function',
+        legend: { position: 'bottom' },
+        width: 800,
+        height: 400,
+        hAxis: { title: 'Tiempo' },
+        vAxis: { title: 'Valores' }
+    };
+
+    //Dibujar el gráfico
+    const chart = new google.visualization.LineChart(mainGraphContainer);
+    chart.draw(data, options);
+
     reps++;
-
-    let result = await query(idDevice, key, 0);
-    ppmCurrentText.textContent = result.Ppm;
-    humidityCurrentText.textContent = result.Humidity;
-    temperatureCurrentText.textContent = result.Temperature;
-
-    await sleep(5000); // 2 segundos
+    await sleep(5000); // 5 segundos
     dataReload(idDevice, key);
 }
 
 async function setup(idDevice, key){//Maneja los máximos y mínimos, así como el llenado de los arreglos de los distintos datos.
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+
     ppmCurrentText = document.getElementById("ppm-text-holder");
     ppmAvgText = document.getElementById("ppm-text-holder-prom");
     ppmMaxText = document.getElementById("ppm-text-holder-max");
@@ -108,6 +159,13 @@ async function setup(idDevice, key){//Maneja los máximos y mínimos, así como 
     humidityStatusContainer = document.getElementById("humidity-status-container");
     humidityStatusText = document.getElementById("humidity-status-text-holder");
     humidityStatusDesc = document.getElementById("humidity-status-text-description");
+    
+    mainGraphContainer = document.getElementById("main-graph-container");
+    ppmGraphContainer = document.getElementById("ppm-graph-container");
+    temperatureGraphContainer = document.getElementById("temperature-graph-container");
+    humidityGraphContainer = document.getElementById("humidity-graph-container");
+
+    graphData = await query(idDevice, key, 1);
 
     dataReload(idDevice, key);
 }
