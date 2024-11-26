@@ -141,6 +141,36 @@ async function dataReload(idDevice, key){
     humidityCurrentText.textContent = result.Humidity;
     temperatureCurrentText.textContent = result.Temperature;
 
+    
+    
+    if(result.Temperature<25){
+        temperatureStatusContainer.style = "background-color: red";
+        temperatureStatusText.textContent = "ALERTA";
+        temperatureStatusDesc.textContent = "El valor está por debajo de lo recomendado";
+    }else if(result.Humidity>=25 && result.Humidity<=30){
+        temperatureStatusContainer.style = "background-color: #5C5C5C";
+        temperatureStatusText.textContent = "Correcto";
+        temperatureStatusDesc.textContent = "El nivel de temperatura en el ambiente esta en optimas condiciones";
+    }else{
+        temperatureStatusContainer.style = "background-color: red";
+        temperatureStatusText.textContent = "ALERTA";
+        temperatureStatusDesc.textContent = "El valor está por arriba de lo recomendado";
+    }
+
+    if(result.Humidity<20){
+        humidityStatusContainer.style = "background-color: red";
+        humidityStatusText.textContent = "ALERTA";
+        humidityStatusDesc.textContent = "El valor está por debajo de lo recomendado";
+    }else if(result.Humidity>=20 && result.Humidity<=50){
+        humidityStatusContainer.style = "background-color: #5C5C5C";
+        humidityStatusText.textContent = "Correcto";
+        humidityStatusDesc.textContent = "El nivel de humedad en el ambiente esta en optimas condiciones";
+    }else{
+        humidityStatusContainer.style = "background-color: red";
+        humidityStatusText.textContent = "ALERTA";
+        humidityStatusDesc.textContent = "El valor está por arriba de lo recomendado";
+    }
+
     if(reps==120){ //Datos de máximos, minimos y promedios, cargándose cada 10 minutos
         reps=1;
         let result = await query(idDevice, key, 5);
