@@ -466,17 +466,17 @@ section.statistics{
 }
 
 .graph-holders{
-    max-width: 95%;
-    width: 1000px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-content: space-between;
 }
 
 .tiny-graph{
-    width: 25vw;
-    height: 15vw;
+    width: 20vw;
+    height: 13vw;
     display: inline-block;
     border-radius: 20px;
     border: 3px double #787877;
+    background: #ffffff;
+    margin: 15px;
 }

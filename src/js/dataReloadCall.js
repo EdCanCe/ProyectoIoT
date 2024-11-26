@@ -93,8 +93,8 @@ function graphTheData(){
     //Opciones del gráfico
     var options = {
         title: 'TITULO',
-        width: screen.width*0.25,
-        height: screen.width*0.15,
+        width: screen.width*0.20,
+        height: screen.width*0.12,
         curveType: 'function',
         legend: { position: 'bottom' }
     };
