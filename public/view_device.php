@@ -153,7 +153,7 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
             </div>
 
         </div>
-        <h1 class="centered">Key: <?php echo $device->getKey() ?></h1>
+        <h1 class="centered">ID: <?php echo $device->getIdDevice() ?> | Key: <?php echo $device->getKey() ?></h1>
     </section>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
