@@ -6,7 +6,7 @@ require_once "../utils/redirect.php"; //Permite redireccionar ya sea para errore
 if(isset($_POST["IDUser"])){ //Actualización del perfil
 
 }else if(isset($_POST["GivenName"])){ //Creación de perfil
-    $user = new User(newUsername: $_POST["Username"]);
+    $user = new User(null, $_POST["Username"]);
     if($user->itExists()) redirect("error/Ya+existe+una+cuenta+con+ese+nombre+de+usuario."); //Verifica si ya existe, ya que no pueden existir 2 usernames iguales.
 
     //Guarda los datos en $user y lo sube a la base de datos
@@ -21,10 +21,10 @@ if(isset($_POST["IDUser"])){ //Actualización del perfil
     $_SESSION["IDUser"]=$user->getIDUser();
     $_SESSION["Username"]=$user->getUsername();
 
-    redirect("home");
+    redirect("home", false);
 
 }else if(isset($_POST["Username"]) && isset($_POST["AccessKey"])){ //Inicio de sesión
-    $user = new User(newUsername: $_POST["Username"]);
+    $user = new User(null, $_POST["Username"]);
     if(!$user->itExists()) redirect("error/No+existe+una+cuenta+con+ese+nombre+de+usuario."); //Verifica si existe la cuenta
     $user->loadFromDB();
 
@@ -35,7 +35,7 @@ if(isset($_POST["IDUser"])){ //Actualización del perfil
     $_SESSION["IDUser"]=$user->getIDUser();
     $_SESSION["Username"]=$user->getUsername();
 
-    redirect("home");
+    redirect("home", false);
 
 }else if(isset($_POST["Username"])){ //Búsqueda de perfil
 

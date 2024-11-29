@@ -12,7 +12,7 @@ $adressSetter = offsetAdress(1); //Quita el offset de la dirección
 
 if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
     $id = intval($_GET["id"]);
-    $device = new Device(newIdDevice: $id);
+    $device = new Device($id);
 
     if(!$device->itExists()) redirect("error/No+existe+este+dispositivo.");
 
@@ -151,11 +151,15 @@ if(isset($_GET["id"]) && isset($_SESSION["IDUser"])){
                 <div class="tiny-graph" id="humidity-graph-container"></div>
                 <div class="tiny-graph" id="temperature-graph-container"></div>
             </div>
+
         </div>
+        <h1 class="centered">Key: <?php echo $device->getKey() ?></h1>
     </section>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>setup(<?php echo $device->getIdDevice() ?>, "<?php echo $device->getKey() ?>")</script>
+
+
 
 <?php }else{
     redirect("home"); //Como no tiene declarado el ID del dispositivo, mejor lo regresa a la pantalla de inicio.

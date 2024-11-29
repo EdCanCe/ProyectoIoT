@@ -62,7 +62,7 @@ class Device{
      * La clave se encripta utilizando la fecha y hora actual.
      */
     public function setAccessKey(){
-        $this->accessKey = encrypt(date('y/m/d-H:i'), 20);
+        $this->accessKey = encrypt(date('y*m*d*H*i'), 20);
     }
 
     /**

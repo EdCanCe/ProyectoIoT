@@ -7,11 +7,11 @@ function logout(){
     renderHeader("Cerrar Sesión", 1, ["JS"], ["CSS"]);
     session_destroy();
     session_start();
-    redirect("home");
+    redirect("home", false);
 }
 
 function login(){
-    echo renderHeader("Iniciar Sesión", 0, ["JS"], ["login"]);
+    echo renderHeader("Iniciar Sesión", 0, ["redirect"], ["login"]);
     if(isset($_SESSION["IDUser"])){
         redirect("error/No+se+puede+iniciar+sesión.+Cierre+sesión+porfavor");
     }else{
@@ -45,7 +45,7 @@ function login(){
 }
 
 function createAccount(){
-    echo renderHeader("Crear Cuenta", 0, ["JS"], ["createAccount"]);
+    echo renderHeader("Crear Cuenta", 0, ["redirect"], ["createAccount"]);
     if(isset($_SESSION["IDUser"])){
         redirect("error/No+se+puede+crear+una+cuenta.+Cierre+sesión+porfavor");
     }else{

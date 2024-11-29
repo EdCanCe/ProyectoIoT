@@ -70,6 +70,7 @@ HTML;
                 $html = $html . "<li><a href='{$adressSetter}device/{$devices[$i]->getIdDevice()}'>{$devices[$i]->getPlace()}</a></li>";
             }
         }
+        $html = $html . "<li><a href='{$adressSetter}addDevice'>Añadir dispositivo</a></li>";
         $html .= <<<HTML
                 </ul>
             </div>

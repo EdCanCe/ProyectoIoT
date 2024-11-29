@@ -15,7 +15,7 @@ if(isset($_GET["id"])){ //El ID del dispositivo
             $humidity = $_GET["humidity"];
             $ppm = $_GET["ppm"];
     
-            $record = new Record(newTemperature: $temperature, newHumidity: $humidity, newPpm: $ppm, newIdDevice: $id);
+            $record = new Record(null, null, $temperature, $humidity, $ppm, $id);
 
             $record->addToDB();
 

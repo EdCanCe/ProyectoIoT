@@ -475,3 +475,9 @@ section.show-data{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
+
+.centered{
+    margin-top: 3em;
+    color: #22201F;
+    font-family: "Afacad", sans-serif;
+}
