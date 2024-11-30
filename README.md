@@ -13,7 +13,7 @@ Este proyecto está diseñado para carpinteros que buscan mejorar la calidad y s
 ### Hardware
 - ESP32 (Microcontrolador) [*Enlace a documentación*](https://github.com/EdCanCe/ProyectoIoT/blob/main/docs/ESP32.pdf)
 - DHT11 (Sensor de temperatura y humedad) [*Enlace a documentación*](https://github.com/EdCanCe/ProyectoIoT/blob/main/docs/DHT11.PDF)
-- DC01 (Sensor de polvo) [*Enlace a documentación*]()
+- DC01 (Sensor de polvo) [*Enlace a documentación*](https://github.com/EdCanCe/ProyectoIoT/blob/main/docs/DC01.pdf)
 
 ### Software
 - Arduino IDE (Graba el código en el ESP32)
