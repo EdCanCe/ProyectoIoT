@@ -23,10 +23,10 @@ DHT dht11(DHT11_PIN, DHT11);
 //Variables globales
 float temp_hum_values[2];
 int dust_value;
-// String baseURL = "https://edcance.dev/IoT/testInsert/";
+String baseURL = "https://edcance.dev/IoT/testInsert/";
 String DeviceID = "1";
 String DeviceKey = "qyyF$SyjGym$rKM7eMsZ";
-String baseURL = "https://edcance.dev/IoT/addRecord/" + DeviceID + "/" + DeviceKey + "/";
+baseURL = baseURL + DeviceID + "/" + DeviceKey + "/";
 String url = "";
 
 // Clave para WiFi
