@@ -18,16 +18,11 @@ RewriteRule ^IoT/signup/?$ IoT/public/log_control.php?type=2 [L]
 RewriteRule ^IoT/?$ /IoT/home [R=301,L]
 RewriteRule ^IoT/home/?$ IoT/public/welcome.php [L]
 
-# Redirección a "welcome.php" si solo se accede a "/IoT/current"
-RewriteRule ^IoT/current/?$ IoT/public/welcome.php [L]
-RewriteRule ^IoT/principal/?$ IoT/public/principal.php [L]
+# Redirección para crear nuevos dispositivos
+RewriteRule ^IoT/addDevice/?$ IoT/public/add_device.php [L]
 
 # Redirección a página de dispositivo
 RewriteRule ^IoT/device/([0-9]+)$ IoT/public/view_device.php?id=$1 [L]
-
-# Inserción de datos en "datos.php" con el parámetro "text"
-RewriteRule ^IoT/testInsert/([a-zA-Z0-9ñÑ\-_\(\)\$\%\&\.]+)$ IoT/public/datos.php?text=$1 [L]
-RewriteRule ^IoT/testInsert/?$ IoT/public/datos.php [L]
 
 # Inserción de datos en "record_controller.php" con parámetros: id, key, temperature, humidity, ppm
 RewriteRule ^IoT/addRecord/([0-9]+)\/([a-zA-Z0-9#$&()*]+)\/([0-9.]+)\/([0-9.]+)\/([0-9.]+)$ IoT/src/controllers/record_controller.php?id=$1&key=$2&temperature=$3&humidity=$4&ppm=$5 [L]
